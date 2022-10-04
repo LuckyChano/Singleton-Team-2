@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movimientos : Entity
+public abstract class Movimientos : Entity
 {
     [SerializeField] JoyController joyController;
     [SerializeField] float speed = 5;

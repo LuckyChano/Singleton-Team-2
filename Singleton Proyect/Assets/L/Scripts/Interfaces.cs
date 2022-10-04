@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PlayerLifeSistem : Movement
+public class Interfaces : MonoBehaviour
 {
-    //Implementacion de interfaz
+
 }
