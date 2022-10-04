@@ -13,6 +13,7 @@ public class Player : PlayerLifeSistem
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+            EventManager.Trigger(EventManager.NameEvent.Fear, transform.position);
     }
 }
