@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
         if (_counter >= maxTime)
         {
             ResetBullet();
-            _pool.ReturnObject(b);
+            //_pool.ReturnObject(b);
         }
 
     }
