@@ -4,52 +4,68 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Bullet bullet;
-    ObjectPool<Bullet> _pool;
-    public int stock;
-    Factory<Bullet> _factory;
+    public Enemy enemyPf;
+    
+    public Transform[] spawnPoints;
+    public Enemy[] enemy;
+    
+    ObjectPool<Enemy> _pool;
+    Factory<Enemy> _factory;
 
-    public int maxTime;
-    float _counter;
+    public int stock;
+
+    public float _counter;
+    public int maxTime = 4;
 
     void Start()
     {
-        _factory = new Factory<Bullet>();
-        _pool = new ObjectPool<Bullet>(_factory.Get, TurnOn, TurnOff, stock);
+        _factory = new Factory<Enemy>(enemyPf);
+        _pool = new ObjectPool<Enemy>(_factory.Get, TurnOn, TurnOff, stock);
+
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            if (enemy[i] == null)
+            {
+                var e = _pool.GetObject();
+                e.GetObjectPoolReference(_pool);
+                enemy[i] = e;
+                enemy[i].visible = true;
+                e.transform.position = spawnPoints[i].transform.position;
+            }
+        }
+
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            var b = _pool.GetObject();
-            b.transform.position = transform.position;
-            b.transform.forward = transform.forward;
-        }
-
         _counter += Time.deltaTime;
 
         if (_counter >= maxTime)
         {
-            ResetBullet();
-            //_pool.ReturnObject(b);
-        }
+            for (int i = 0; i < spawnPoints.Length; i++)
+            {
 
+                if (!enemy[i].visible)
+                {
+                    var e = _pool.GetObject();
+                    e.GetObjectPoolReference(_pool);
+                    enemy[i] = e;
+                    enemy[i].visible = true;
+                    e.transform.position = spawnPoints[i].transform.position;
+                }
+            }
+            _counter = 0;
+        }
     }
 
-    public void TurnOn(Bullet b)
+    public void TurnOn(Enemy b)
     {
         b.gameObject.SetActive(true);
     }
 
-    public void TurnOff(Bullet b)
+    public void TurnOff(Enemy b)
     {
         b.gameObject.SetActive(false);
-    }
-
-    public void ResetBullet()
-    {
-        _counter = 0;
     }
 }
 
