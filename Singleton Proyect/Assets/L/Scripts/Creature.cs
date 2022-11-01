@@ -11,6 +11,6 @@ public class Creature : MonoBehaviour
 
     void PlayerScream(params object[] parameters)
     {
-        Debug.Log("El player me hizo causo Fear, salgo corriendo por mi vida");
+        Debug.Log("El player me causo Fear, salgo corriendo por mi vida");
     }
 }
