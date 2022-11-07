@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed = 10;
-
+    public float speed;
     private Transform target;
     private int wavepointIndex = 0;
 
@@ -14,10 +13,11 @@ public class EnemyMovement : MonoBehaviour
         target = WayPoints.points[0];    
     }
 
-    private void Update()
+    void Update()
     {
         Vector3 dir = target.position - transform.position;
         transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
+
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
             GetNextWaypoint();
@@ -34,4 +34,6 @@ public class EnemyMovement : MonoBehaviour
         wavepointIndex++;
         target = WayPoints.points[wavepointIndex];
     } 
+
+
 }

@@ -18,12 +18,13 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (turret! == null)
+        if (turret != null)
         {
             Debug.Log("You cant build Here");
             return;
         }
-
+        GameObject turretToBuild = BuildManager.instance.getTurretToBuild();
+        turret = Instantiate(turretToBuild, transform.position, transform.rotation);
     }
 
     private void OnMouseEnter()
