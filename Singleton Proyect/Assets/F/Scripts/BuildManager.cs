@@ -8,6 +8,7 @@ public class BuildManager : MonoBehaviour
 
     public GameObject CannonTurretPrefab;
     public GameObject ArrowTurretPrefab;
+    public GameObject MagicTurretPrefab;
 
     private GameObject turretToBuild;
 

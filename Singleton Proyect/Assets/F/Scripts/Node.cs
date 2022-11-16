@@ -21,7 +21,7 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        //Evita que el UI blockea la interaccion con los nodos. ---- (ej: si estan abajo del UI)
+        //Evita que el UI blockee la interaccion con los nodos. ---- (ej: si estan abajo del UI)
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 

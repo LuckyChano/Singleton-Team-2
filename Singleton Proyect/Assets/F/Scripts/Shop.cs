@@ -10,6 +10,11 @@ public class Shop : MonoBehaviour
     {
         buildManager = BuildManager.instance;    
     }
+    public void BuyMagicTurret()
+    {
+        Debug.Log("MagicTurret");
+        buildManager.SetTurretToBuild(buildManager.MagicTurretPrefab);
+    }
     public void BuyCannonTurret()
     {
         Debug.Log("CannonTurret");
