@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
+    //Este script Targetea al Enemigo, hace que la Torreta lo apunte e Instancia el Bullet.///////////////////////////////////////////////////////////////////
+
     private Transform target;
 
     [Header("Atributos")]
@@ -30,16 +32,19 @@ public class Turret : MonoBehaviour
     {
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
+
     void Update()
     {
         if (target == null)
             return;
-   
+        
+        //Le apunta al target.
         Vector3 dir = target.position - transform.position;
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
+        //Dispara.
         if (fireCountdown <= 0f)
         {
             Shoot();
@@ -49,6 +54,7 @@ public class Turret : MonoBehaviour
         fireCountdown -= Time.deltaTime;
     }
 
+    //Instancia el Bullet.
     void Shoot()
     {
         GameObject bulletGameObj = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -59,6 +65,7 @@ public class Turret : MonoBehaviour
         
     }
 
+    //Targete al enemigo mas sercano.
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");

@@ -4,31 +4,35 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    BuildManager buildManager;
+    //Este script se encarga de seleccionar la torreta que voy a construir una vez que el BluePrint fue seleccionado./////////////////////////////////////////////////////////////////////////////////////
+
+    public TurretBlueprint arrowTurret;
+    public TurretBlueprint cannonTurret;
+    public TurretBlueprint magicTurret;
+
+    BuildManager buildManager; 
 
     void Start()
     {
         buildManager = BuildManager.instance;    
     }
-    public void BuyMagicTurret()
-    {
-        Debug.Log("MagicTurret");
-        buildManager.SetTurretToBuild(buildManager.MagicTurretPrefab);
-    }
-    public void BuyCannonTurret()
-    {
-        Debug.Log("CannonTurret");
-        buildManager.SetTurretToBuild(buildManager.CannonTurretPrefab);
-    }
-    public void BuyArrowTurret()
+
+    //Estos llaman a un metodo en el build manager que se encargar de seleccionar la torreta que se va a construir.
+    public void SelectArrowTurret()
     {
         Debug.Log("ArrowTurret");
-        buildManager.SetTurretToBuild(buildManager.ArrowTurretPrefab);
+        buildManager.SelectTurretToBuild(arrowTurret);
+    }
+    public void SelectCannonTurret()
+    {
+        Debug.Log("CannonTurret");
+        buildManager.SelectTurretToBuild(cannonTurret);
+    }
+    public void SelectMagicTurret()
+    {
+        Debug.Log("MagicTurret");
+        buildManager.SelectTurretToBuild(magicTurret);
     }
 
-    //NOTA: LA TORRETA MAGICA SE COLOCA Y DESPUES SE PUEDE MEJORAR EN ALGUN ELEMENTO.       
-    //public void BuyMagicTurret()
-    //{
-    //    Debug.Log("MagicTurret");
-    //}
+    //NOTA: LA TORRETA MAGICA SE COLOCA Y DESPUES SE PUEDE MEJORAR EN ALGUN ELEMENTO.
 }

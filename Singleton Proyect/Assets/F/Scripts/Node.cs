@@ -5,11 +5,18 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
-    public Color hoverColor;
+    //Este Script se encarga de Manejar los Nodos en los cuales podes construir las torretas./////////////////////////////////////////////////////////////////////
+
     private Renderer rend;
+
+    public Vector3 positionOffset;
+
+    public Color hoverColor;
     private Color startColor;
 
-    private object turret;
+    [Header("Optional")]
+    public GameObject turret;
+
     BuildManager buildManager;
 
     void Start()
@@ -19,13 +26,19 @@ public class Node : MonoBehaviour
         startColor = rend.material.color;
     }
 
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
+
     private void OnMouseDown()
     {
         //Evita que el UI blockee la interaccion con los nodos. ---- (ej: si estan abajo del UI)
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (buildManager.GetTurretToBuild() == null)
+        //Instancia la torreta en el nodo si no hay una torreta ya en ese lugar.
+        if (!buildManager.CanBuild)
             return;
         
         if (turret != null)
@@ -33,16 +46,17 @@ public class Node : MonoBehaviour
             Debug.Log("You cant build Here");
             return;
         }
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-        turret = Instantiate(turretToBuild, transform.position, transform.rotation);
+
+        buildManager.BuildTurretOn(this);
+        
     }
 
-    private void OnMouseEnter()
+    void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
         
-        if (buildManager.GetTurretToBuild() == null)
+        if (!buildManager.CanBuild)
             return;
         rend.material.color = hoverColor;
     }

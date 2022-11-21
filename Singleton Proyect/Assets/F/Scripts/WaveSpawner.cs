@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
-    //Spawnea los enemigos que recorren la pasarela.
+    //Este Script Spawnea los enemigos que recorren la pasarela.//////////////////////////////////////////////////////////////////////////////////////////////
 
     public Transform enemyPrefab;
     public Transform spownPoint;

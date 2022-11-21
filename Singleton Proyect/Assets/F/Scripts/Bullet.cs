@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    //Este Script Se encarga del daño a los enemigos y los efectos de las bullets.//////////////////////////////////////////////////////////////////////////////
+
     public Transform target;
-    public float speed = 70f;
+    
     public GameObject impactEffect;
+
+    public float speed = 70f;
+    public float impactRadius = 0f;
+
+
     public void Seek(Transform _target)
     {
         target = _target;
-    }
-
-    void Start()
-    {
-        
     }
 
     void Update()
@@ -34,14 +36,43 @@ public class Bullet : MonoBehaviour
         }
 
         transform.Translate(dir.normalized * distanceByFrame, Space.World);
+        transform.LookAt(target);
     }
 
+    //Se fija si el enemigo golpeado por la bullet tiene un radio de impacto mayor a 0, si es asi Explota(Daño area) si no es un single hit y Destroys el bullet.
     void HitTarget()
     {
-        Debug.Log("Hit");
         GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 2f);
 
+        if (impactRadius > 0)
+        {
+            Explode();
+        }
+        else
+        {
+            Damage(target);
+        }
         Destroy(gameObject);
     }
+
+    //Dispara una esfera con cierto radio para checkear que Objetos con el tag "Enemy" golpea. Les hace daño.
+    void Explode()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius);
+        foreach (Collider collider in colliders)
+        {
+            if(collider.tag == "Enemy")
+            {
+                Damage(collider.transform);
+            }
+        }
+    }
+
+    //Daña a los enemigos.
+    void Damage(Transform enemy)
+    {
+        Destroy(enemy.gameObject);
+    }
+
 }
