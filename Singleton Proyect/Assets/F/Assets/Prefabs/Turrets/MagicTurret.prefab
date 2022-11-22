@@ -99,7 +99,7 @@ MonoBehaviour:
   fireRate: 0.8
   enemyTag: Enemy
   partToRotate: {fileID: 3469476935346286827}
-  bulletPrefab: {fileID: 8068954710001544342, guid: f7c041acfb6383245bea9f7c19c38cbb, type: 3}
+  bulletPrefab: {fileID: 3851485714448879669, guid: dbacbcf012740634f80d1081764167b4, type: 3}
   firePoint: {fileID: 3469476934061694763}
   turnSpeed: 10
   fireCountdown: 0
@@ -161,6 +161,30 @@ PrefabInstance:
     - target: {fileID: 6908631768005684827, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910727408421444536, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.61586
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910727408421444536, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.61586
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910727408421444536, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.61586
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910727408421444536, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0019363
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910727408421444536, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.242
+      objectReference: {fileID: 0}
+    - target: {fileID: 7910727408421444536, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.40908
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6101167284255290592, guid: e26ddff812fb17a4d8c7eccf4031ef4a, type: 3}

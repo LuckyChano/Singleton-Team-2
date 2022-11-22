@@ -5,5 +5,5 @@ using System.Collections;
 public class TurretBlueprint
 {
     public GameObject prefab;
-    public int Cost;
+    public int cost;
 }

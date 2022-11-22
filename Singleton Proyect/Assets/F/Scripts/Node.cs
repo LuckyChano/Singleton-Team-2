@@ -7,16 +7,18 @@ public class Node : MonoBehaviour
 {
     //Este Script se encarga de Manejar los Nodos en los cuales podes construir las torretas./////////////////////////////////////////////////////////////////////
 
-    private Renderer rend;
 
     public Vector3 positionOffset;
 
     public Color hoverColor;
-    private Color startColor;
+    public Color cantBuyColor;
 
     [Header("Optional")]
     public GameObject turret;
 
+    private Renderer rend;
+    private Color startColor;
+    
     BuildManager buildManager;
 
     void Start()
@@ -58,7 +60,15 @@ public class Node : MonoBehaviour
         
         if (!buildManager.CanBuild)
             return;
-        rend.material.color = hoverColor;
+
+        if (buildManager.HasMoney)
+        {
+            rend.material.color = hoverColor;   
+        }
+        else
+        {
+            rend.material.color = cantBuyColor;
+        }
     }
 
     private void OnMouseExit()
