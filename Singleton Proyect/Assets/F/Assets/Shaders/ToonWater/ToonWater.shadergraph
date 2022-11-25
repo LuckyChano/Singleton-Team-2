@@ -2,38 +2,7 @@
     "m_SGVersion": 2,
     "m_Type": "UnityEditor.ShaderGraph.GraphData",
     "m_ObjectId": "6e798dde7f6743278147733bcc868591",
-    "m_Properties": [
-        {
-            "m_Id": "bfb159b338ae4c759570b27b0bbddb0c"
-        },
-        {
-            "m_Id": "dad1c7cf60664aa78800a9c0a519108d"
-        },
-        {
-            "m_Id": "62ae182a5f004406ac0d84323b84a040"
-        },
-        {
-            "m_Id": "271c9589716547d680403b3b8dbcd008"
-        },
-        {
-            "m_Id": "dbaca1183ef74250ac2c68d2e3eadc91"
-        },
-        {
-            "m_Id": "579cc975a7c74cfbb2f91ede3a3d0c70"
-        },
-        {
-            "m_Id": "c2066aa2ee844f0eb6fcd0e01a5352f0"
-        },
-        {
-            "m_Id": "8c037e82f90743c3acc0159fb05b2048"
-        },
-        {
-            "m_Id": "7d909339495c44afa605fdd34ed38631"
-        },
-        {
-            "m_Id": "0c0d19b32ed443f489096d27c6b6c82b"
-        }
-    ],
+    "m_Properties": [],
     "m_Keywords": [],
     "m_Nodes": [
         {
@@ -72,8 +41,8 @@
     "m_Edges": [],
     "m_VertexContext": {
         "m_Position": {
-            "x": 1454.9998779296875,
-            "y": 1457.0
+            "x": 2061.0,
+            "y": 1435.0
         },
         "m_Blocks": [
             {
@@ -89,8 +58,8 @@
     },
     "m_FragmentContext": {
         "m_Position": {
-            "x": 1454.9998779296875,
-            "y": 1657.0
+            "x": 2061.0,
+            "y": 1635.0
         },
         "m_Blocks": [
             {
@@ -148,30 +117,6 @@
     "m_Value": 0.0,
     "m_DefaultValue": 0.0,
     "m_Labels": []
-}
-
-{
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "0c0d19b32ed443f489096d27c6b6c82b",
-    "m_Guid": {
-        "m_GuidSerialized": "ab37531f-f55d-45fc-84ae-78c7af07877c"
-    },
-    "m_Name": "Deep Color",
-    "m_DefaultReferenceName": "Color_0c0d19b32ed443f489096d27c6b6c82b",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 0.08627451211214066,
-        "g": 0.2964440584182739,
-        "b": 0.47058823704719546,
-        "a": 0.0
-    },
-    "m_ColorMode": 0
 }
 
 {
@@ -322,29 +267,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "271c9589716547d680403b3b8dbcd008",
-    "m_Guid": {
-        "m_GuidSerialized": "0856d84c-ceaa-4bd8-8914-b829ec83bdeb"
-    },
-    "m_Name": "Foam Depth",
-    "m_DefaultReferenceName": "",
-    "m_OverrideReferenceName": "Vector1_bfb159b338ae4c759570b27b0bbddb0c_3",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 2.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "3024737732a94d0eb857ca318deff260",
@@ -465,29 +387,6 @@
 }
 
 {
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "579cc975a7c74cfbb2f91ede3a3d0c70",
-    "m_Guid": {
-        "m_GuidSerialized": "dd60a9b0-7e67-4a50-9b16-ee9276081376"
-    },
-    "m_Name": "Foam Ripple Speed",
-    "m_DefaultReferenceName": "Vector1_579cc975a7c74cfbb2f91ede3a3d0c70",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.30000001192092898,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.ColorRGBMaterialSlot",
     "m_ObjectId": "5a1587084e9a45ec90926bf591aad106",
@@ -548,29 +447,6 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Occlusion"
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "62ae182a5f004406ac0d84323b84a040",
-    "m_Guid": {
-        "m_GuidSerialized": "5ebd287a-37cc-4949-bd89-30e1bc71b044"
-    },
-    "m_Name": "Water Speed",
-    "m_DefaultReferenceName": "",
-    "m_OverrideReferenceName": "Vector1_bfb159b338ae4c759570b27b0bbddb0c_2",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 2.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
 }
 
 {
@@ -661,53 +537,6 @@
 }
 
 {
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "7d909339495c44afa605fdd34ed38631",
-    "m_Guid": {
-        "m_GuidSerialized": "791c1b7f-d93e-4456-ba47-5bfc520ac752"
-    },
-    "m_Name": "Shallow Color",
-    "m_DefaultReferenceName": "Color_7d909339495c44afa605fdd34ed38631",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 0.2432805448770523,
-        "g": 0.554071843624115,
-        "b": 0.7264150977134705,
-        "a": 1.0
-    },
-    "m_ColorMode": 0
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "8c037e82f90743c3acc0159fb05b2048",
-    "m_Guid": {
-        "m_GuidSerialized": "152794a3-cc89-4d34-9070-59a850eab68d"
-    },
-    "m_Name": "Depth Fade",
-    "m_DefaultReferenceName": "Vector1_8c037e82f90743c3acc0159fb05b2048",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 0.699999988079071,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.BlockNode",
     "m_ObjectId": "8c7da9ae4a4d4da7a9e4a1a5e4e81a8e",
@@ -738,52 +567,6 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "VertexDescription.Tangent"
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "bfb159b338ae4c759570b27b0bbddb0c",
-    "m_Guid": {
-        "m_GuidSerialized": "6841b7d7-8859-40dc-979f-589ceb30023e"
-    },
-    "m_Name": "Water Noice Scale",
-    "m_DefaultReferenceName": "Vector1_bfb159b338ae4c759570b27b0bbddb0c",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 363.260009765625,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "c2066aa2ee844f0eb6fcd0e01a5352f0",
-    "m_Guid": {
-        "m_GuidSerialized": "764bddaf-6e6f-46e5-bc52-bb53f7a51e13"
-    },
-    "m_Name": "Foam Noice Scale",
-    "m_DefaultReferenceName": "Vector1_c2066aa2ee844f0eb6fcd0e01a5352f0",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 10.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
 }
 
 {
@@ -874,53 +657,6 @@
         "m_SerializableColors": []
     },
     "m_SerializedDescriptor": "SurfaceDescription.Emission"
-}
-
-{
-    "m_SGVersion": 1,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector1ShaderProperty",
-    "m_ObjectId": "dad1c7cf60664aa78800a9c0a519108d",
-    "m_Guid": {
-        "m_GuidSerialized": "aa78df74-06c2-4be4-a6b0-5fb56c190cdc"
-    },
-    "m_Name": "Water Heigth",
-    "m_DefaultReferenceName": "",
-    "m_OverrideReferenceName": "Vector1_bfb159b338ae4c759570b27b0bbddb0c_1",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": 2.0,
-    "m_FloatType": 0,
-    "m_RangeValues": {
-        "x": 0.0,
-        "y": 1.0
-    }
-}
-
-{
-    "m_SGVersion": 3,
-    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
-    "m_ObjectId": "dbaca1183ef74250ac2c68d2e3eadc91",
-    "m_Guid": {
-        "m_GuidSerialized": "73bc6cdb-496f-4f0b-b6c1-8274f47532c0"
-    },
-    "m_Name": "Foam Color",
-    "m_DefaultReferenceName": "Color_dbaca1183ef74250ac2c68d2e3eadc91",
-    "m_OverrideReferenceName": "",
-    "m_GeneratePropertyBlock": true,
-    "m_Precision": 0,
-    "overrideHLSLDeclaration": false,
-    "hlslDeclarationOverride": 0,
-    "m_Hidden": false,
-    "m_Value": {
-        "r": 1.0,
-        "g": 1.0,
-        "b": 1.0,
-        "a": 1.0
-    },
-    "m_ColorMode": 0
 }
 
 {
