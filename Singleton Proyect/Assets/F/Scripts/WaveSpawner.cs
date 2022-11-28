@@ -17,22 +17,26 @@ public class WaveSpawner : MonoBehaviour
 
     void Update()
     {
-        //Conteo para spownear la wave.
+        //Conteo para spawnear la wave.
         if (countdown <= 0f)
         {
             StartCoroutine(SpawnWave());
             SpawnWave();
             countdown = timeBetwenWaves;
         }
+
         countdown -= Time.deltaTime;
 
-        waveCountDownText.text = Mathf.Floor(countdown).ToString();
+        //Para que no sea un numero negativo.
+        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
+
+        waveCountDownText.text = string.Format("{0:00.00'}", countdown);
     }
 
+    //Spawnea los enemigos segun la wave.
     IEnumerator SpawnWave()
     {
         waveIndex++;
-        //Spownea los enemigos segun la wave.
         for (int i = 0; i < waveIndex; i++)
         {
             SpawnEnemy();
