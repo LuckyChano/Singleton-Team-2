@@ -10,7 +10,7 @@ public class Shop : MonoBehaviour
     public TurretBlueprint cannonTurret;
     public TurretBlueprint magicTurret;
 
-    BuildManager buildManager; 
+    BuildManager buildManager;
 
     void Start()
     {
