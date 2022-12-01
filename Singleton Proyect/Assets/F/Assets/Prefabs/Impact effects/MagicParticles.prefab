@@ -4889,7 +4889,7 @@ Transform:
   m_GameObject: {fileID: 4477597746421041624}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.7229, y: 2.7229, z: 2.7229}
   m_Children: []
   m_Father: {fileID: 4477597746831672177}
   m_RootOrder: 0
@@ -6215,7 +6215,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 0
+    enabled: 1
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -6223,24 +6223,24 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 1, b: 1, a: 1}
-        key1: {r: 1, g: 1, b: 1, a: 1}
+        key0: {r: 0.6449554, g: 0.19335175, b: 0.745283, a: 1}
+        key1: {r: 0.015730679, g: 0.0047159195, b: 0.018177688, a: 1}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 0
-        ctime1: 65535
-        ctime2: 0
+        ctime0: 10216
+        ctime1: 53970
+        ctime2: 65535
         ctime3: 0
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
-        atime1: 65535
+        atime0: 31033
+        atime1: 41827
         atime2: 0
         atime3: 0
         atime4: 0
@@ -6248,7 +6248,7 @@ ParticleSystem:
         atime6: 0
         atime7: 0
         m_Mode: 0
-        m_NumColorKeys: 2
+        m_NumColorKeys: 3
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
@@ -9678,7 +9678,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c625b4a713959ec41870c4910e506856, type: 2}
+  - {fileID: 2100000, guid: 527ecf22d8e21aa47b26178e4d91e472, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9736,7 +9736,7 @@ GameObject:
   - component: {fileID: 4477597746831672176}
   - component: {fileID: 4477597746831672175}
   m_Layer: 0
-  m_Name: ExplosionMagica 1
+  m_Name: MagicParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24361,11 +24361,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3129664228039583641, guid: c0dd181bc7b6d1e45ac67ed4c4a5074b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3129664228039583641, guid: c0dd181bc7b6d1e45ac67ed4c4a5074b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2
+      value: 2.48
       objectReference: {fileID: 0}
     - target: {fileID: 3129664228039583641, guid: c0dd181bc7b6d1e45ac67ed4c4a5074b, type: 3}
       propertyPath: m_LocalRotation.w
