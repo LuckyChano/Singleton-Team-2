@@ -19,11 +19,11 @@ public class Node : MonoBehaviour
     private Renderer rend;
     private Color startColor;
     
-    BuildManager buildManager;
+    GameManager gameManager;
 
     void Start()
     {
-        buildManager = BuildManager.instance;
+        gameManager = GameManager.instance;
         rend = GetComponent<Renderer>();
         startColor = rend.material.color;
     }
@@ -33,14 +33,14 @@ public class Node : MonoBehaviour
         return transform.position + positionOffset;
     }
 
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         //Evita que el UI blockee la interaccion con los nodos. ---- (ej: si estan abajo del UI)
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
         //Instancia la torreta en el nodo si no hay una torreta ya en ese lugar.
-        if (!buildManager.CanBuild)
+        if (!gameManager.CanBuild)
             return;
         
         if (turret != null)
@@ -49,19 +49,19 @@ public class Node : MonoBehaviour
             return;
         }
 
-        buildManager.BuildTurretOn(this);
+        gameManager.BuildTurretOn(this);
         
     }
 
-    void OnMouseEnter()
+    public void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
         
-        if (!buildManager.CanBuild)
+        if (!gameManager.CanBuild)
             return;
 
-        if (buildManager.HasMoney)
+        if (gameManager.HasMoney)
         {
             rend.material.color = hoverColor;   
         }
@@ -71,7 +71,7 @@ public class Node : MonoBehaviour
         }
     }
 
-    private void OnMouseExit()
+    public void OnMouseExit()
     {
         rend.material.color = startColor;
     }

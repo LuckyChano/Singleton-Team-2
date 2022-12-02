@@ -10,28 +10,28 @@ public class Shop : MonoBehaviour
     public TurretBlueprint cannonTurret;
     public TurretBlueprint magicTurret;
 
-    BuildManager buildManager;
+    GameManager gameManager;
 
     void Start()
     {
-        buildManager = BuildManager.instance;    
+        gameManager = GameManager.instance;    
     }
 
     //Estos llaman a un metodo en el build manager que se encargar de seleccionar la torreta que se va a construir.
     public void SelectArrowTurret()
     {
         Debug.Log("ArrowTurret");
-        buildManager.SelectTurretToBuild(arrowTurret);
+        gameManager.SelectTurretToBuild(arrowTurret);
     }
     public void SelectCannonTurret()
     {
         Debug.Log("CannonTurret");
-        buildManager.SelectTurretToBuild(cannonTurret);
+        gameManager.SelectTurretToBuild(cannonTurret);
     }
     public void SelectMagicTurret()
     {
         Debug.Log("MagicTurret");
-        buildManager.SelectTurretToBuild(magicTurret);
+        gameManager.SelectTurretToBuild(magicTurret);
     }
 
     //NOTA: LA TORRETA MAGICA SE COLOCA Y DESPUES SE PUEDE MEJORAR EN ALGUN ELEMENTO.
