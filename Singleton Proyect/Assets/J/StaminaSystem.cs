@@ -10,7 +10,7 @@ public class StaminaSystem : MonoBehaviour
     [SerializeField] float timeToRecharge = 10f;
     bool restoring;
 
-    public bool HaveStamina { get => MainMenu.instance.stamina > 0; }
+    public bool HaveStamina { get => GameManager.instance.stamina > 0; }
 
     DateTime nextStaminaTime;
     DateTime lastStaminaTime;
@@ -29,10 +29,10 @@ public class StaminaSystem : MonoBehaviour
         LoadTime();
         StartCoroutine(RestoreEnergy());
 
-        if (MainMenu.instance.stamina < maxStamina)
+        if (GameManager.instance.stamina < maxStamina)
         {
             notifID = NotificationManager.instance.DisplayNotif("Estamina LLena", "Estamina Recargada",
-                AddDuration(DateTime.Now, ((maxStamina - MainMenu.instance.stamina) * timeToRecharge) + 1f));
+                AddDuration(DateTime.Now, ((maxStamina - GameManager.instance.stamina) * timeToRecharge) + 1f));
         }
     }
 
@@ -41,7 +41,7 @@ public class StaminaSystem : MonoBehaviour
     {
         UpdateStamina();
         restoring = true;
-        while (MainMenu.instance.stamina < maxStamina)
+        while (GameManager.instance.stamina < maxStamina)
         {
             DateTime currentDateTime = DateTime.Now;
             DateTime nextDateTime = nextStaminaTime;
@@ -49,9 +49,9 @@ public class StaminaSystem : MonoBehaviour
 
             while (currentDateTime > nextDateTime)
             {
-                if (MainMenu.instance.stamina < maxStamina)
+                if (GameManager.instance.stamina < maxStamina)
                 {
-                    MainMenu.instance.stamina += 1;
+                    GameManager.instance.stamina += 1;
                     staminaAdd = true;
                     UpdateStamina();
                     DateTime timeToAdd = DateTime.Now;
@@ -90,14 +90,14 @@ public class StaminaSystem : MonoBehaviour
 
     public void UseEnergy(int energyAmmount)
     {
-        if (MainMenu.instance.stamina - energyAmmount >= 0)
+        if (GameManager.instance.stamina - energyAmmount >= 0)
         {
-            MainMenu.instance.stamina -= energyAmmount;
+            GameManager.instance.stamina -= energyAmmount;
             UpdateStamina();
 
             NotificationManager.instance.CancelNotif(notifID);
             notifID = NotificationManager.instance.DisplayNotif("Estamina Llena", "Estamina Recargada",
-                AddDuration(DateTime.Now, ((maxStamina - MainMenu.instance.stamina) * timeToRecharge) + 1f));
+                AddDuration(DateTime.Now, ((maxStamina - GameManager.instance.stamina) * timeToRecharge) + 1f));
 
             if (!restoring)
             {
@@ -113,12 +113,12 @@ public class StaminaSystem : MonoBehaviour
 
     void UpdateStamina()
     {
-        staminaText.text = MainMenu.instance.stamina.ToString() + " / " + maxStamina.ToString();
+        staminaText.text = GameManager.instance.stamina.ToString() + " / " + maxStamina.ToString();
     }
 
     void UpdateTimer()
     {
-        if (MainMenu.instance.stamina >= maxStamina)
+        if (GameManager.instance.stamina >= maxStamina)
         {
             timerText.text = "";
             fullTimeText.text = "Estamina Llena";
@@ -133,14 +133,14 @@ public class StaminaSystem : MonoBehaviour
 
     void LoadTime()
     {
-        MainMenu.instance.stamina = PlayerPrefs.GetInt("currentStamina");
+        GameManager.instance.stamina = PlayerPrefs.GetInt("currentStamina");
         nextStaminaTime = StringToDateTime(PlayerPrefs.GetString("nextStaminaTime"));
         lastStaminaTime = StringToDateTime(PlayerPrefs.GetString("lastStaminaTime"));
     }
 
     void SaveTime()
     {
-        PlayerPrefs.SetInt("currentStamina", MainMenu.instance.stamina);
+        PlayerPrefs.SetInt("currentStamina", GameManager.instance.stamina);
         PlayerPrefs.SetString("nextStaminaTime", nextStaminaTime.ToString());
         PlayerPrefs.SetString("lastStaminaTime", lastStaminaTime.ToString());
     }

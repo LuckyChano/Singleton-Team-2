@@ -8,6 +8,6 @@ public class MoneyUI : MonoBehaviour
  
     void Update()
     {
-        moneyText.text = "$" + PlayerStats.Money.ToString();
+        moneyText.text = "$" + GameManager.instance.Money.ToString();
     }
 }

@@ -37,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
     //Agrega Dinero cada vez que matas un enemigo y aplica los efectos de muerte del mismo./////////////////////////////////////////////////////
     void Die()
     {
-        PlayerStats.Money += moneyGain;
+        GameManager.instance.Money += moneyGain;
 
         GameObject effect = (GameObject) Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 4f);
@@ -73,7 +73,7 @@ public class EnemyMovement : MonoBehaviour
 
     void EndPath()
     {
-        PlayerStats.instance.ReduceLife();
+        GameManager.instance.ReduceLife();
         Destroy(gameObject);
     }
 

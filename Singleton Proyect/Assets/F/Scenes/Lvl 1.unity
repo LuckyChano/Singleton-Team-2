@@ -490,6 +490,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8902533428090001288, guid: 689cfe7416674c04085de16db74c8b05, type: 3}
   m_PrefabInstance: {fileID: 2094512213}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &170518461 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6488124040125330555, guid: 7fe8fb0d6f54ae44da8a875e2f0361cc, type: 3}
+  m_PrefabInstance: {fileID: 6488124040326559896}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &176015684
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,7 +2515,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 9.5999565}
+  m_AnchoredPosition: {x: 0, y: 9.59996}
   m_SizeDelta: {x: 706, y: 249.20007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1033916624
@@ -5265,6 +5270,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1696412807}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1711199085 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6488124040125330555, guid: 7fe8fb0d6f54ae44da8a875e2f0361cc, type: 3}
+  m_PrefabInstance: {fileID: 1332842923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1728564186
 GameObject:
   m_ObjectHideFlags: 0
@@ -5280,7 +5290,6 @@ GameObject:
   - component: {fileID: 1728564189}
   - component: {fileID: 1728564192}
   - component: {fileID: 1728564194}
-  - component: {fileID: 1728564193}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -5408,19 +5417,6 @@ MonoBehaviour:
   m_RequiresDepthTexture: 0
   m_RequiresColorTexture: 0
   m_Version: 2
---- !u!114 &1728564193
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728564186}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab4eda382c3f20479e88c4faa014917, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.97
 --- !u!114 &1728564194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5655,8 +5651,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1917253707}
   - component: {fileID: 1917253708}
-  - component: {fileID: 1917253709}
-  - component: {fileID: 1917253710}
   - component: {fileID: 1917253706}
   m_Layer: 0
   m_Name: GameManager
@@ -5677,6 +5671,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e024f2c0e4eac4ba6017aebf138626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Money: 0
+  startMoney: 1000
+  stamina: 0
+  Lives: 0
+  startLives: 2
+  CannonTurretPrefab: {fileID: 1964894574}
+  ArrowTurretPrefab: {fileID: 170518461}
+  MagicTurretPrefab: {fileID: 1711199085}
 --- !u!4 &1917253707
 Transform:
   m_ObjectHideFlags: 0
@@ -5707,35 +5709,11 @@ MonoBehaviour:
   spownPoint: {fileID: 32376663}
   timeBetwenWaves: 5
   waveCountDownText: {fileID: 1504645194}
---- !u!114 &1917253709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!1 &1964894574 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6488124040125330555, guid: 7fe8fb0d6f54ae44da8a875e2f0361cc, type: 3}
+  m_PrefabInstance: {fileID: 1163716637}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917253705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b2e275cbc42ed04ea9eb54084df9fbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CannonTurretPrefab: {fileID: 8318745803258563925, guid: 043f5a3170dd1174487f311797277eaa, type: 3}
-  ArrowTurretPrefab: {fileID: 2846182938289654871, guid: 70bb2e04c8e311b4f9198f11498cb397, type: 3}
-  MagicTurretPrefab: {fileID: 1161735051256167630, guid: cadc5112503052446a74fe1df859b8c6, type: 3}
---- !u!114 &1917253710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1917253705}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3d65ab9e66954f4984159073ffd7147, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startMoney: 1989
-  startLives: 2
 --- !u!1 &2029571886
 GameObject:
   m_ObjectHideFlags: 0

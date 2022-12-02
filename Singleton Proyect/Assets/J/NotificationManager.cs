@@ -8,7 +8,6 @@ public class NotificationManager : MonoBehaviour
 {
     public static NotificationManager instance { get; private set; }
 
-
     AndroidNotificationChannel notifChannel;
 
     private void Awake()

@@ -26,7 +26,7 @@ public class BuildManager : MonoBehaviour
 
     //Propiedad que permite dicernir si la torreta se puede construir o no.
     public bool CanBuild { get { return turretToBuild != null; } }
-    public bool HasMoney { get { return PlayerStats.Money >= turretToBuild.cost; } }
+    public bool HasMoney { get { return GameManager.instance.Money >= turretToBuild.cost; } }
 
 
 
@@ -34,18 +34,18 @@ public class BuildManager : MonoBehaviour
     //Construlle la torreta en el Nodo indicado si tenes el dinero suficiente./////////////////////////////////////////////////////////////////////////////////
     public void BuildTurretOn(Node node)
     {
-        if(PlayerStats.Money < turretToBuild.cost)
+        if(GameManager.instance.Money < turretToBuild.cost)
         {
             Debug.Log("Not enaugh money");
             return;
         }
 
-        PlayerStats.Money -= turretToBuild.cost;
+        GameManager.instance.Money -= turretToBuild.cost;
 
         GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
 
-        Debug.Log("Turret build... Money left:" + PlayerStats.Money);
+        Debug.Log("Turret build... Money left:" + GameManager.instance.Money);
     }
 
     public void SelectTurretToBuild (TurretBlueprint turret)
