@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,16 @@ public class GameManager : MonoBehaviour
     private bool gameEnded = false;
     private TurretBlueprint turretToBuild;
 
+    public int stamina;
+    public bool puedoJugar;
+
     public int Money;
     public int startMoney = 400;
-    public int stamina;
+
+    internal void SetActive(bool v)
+    {
+        throw new NotImplementedException();
+    }
 
     public int Lives;
     public int startLives = 20;
@@ -48,6 +56,7 @@ public class GameManager : MonoBehaviour
             GameManager.instance.Lives = 0;
         }
     }
+
     void Start()
     {
         Money = startMoney;
@@ -60,6 +69,8 @@ public class GameManager : MonoBehaviour
         {
             EndGame();
         }
+
+        HavePlay();
     }
 
     //Construlle la torreta en el Nodo indicado si tenes el dinero suficiente./////////////////////////////////////////////////////////////////////////////////
@@ -83,17 +94,7 @@ public class GameManager : MonoBehaviour
     {
         turretToBuild = turret;
     }
-    public void PlayGame()
-    {
-        if (GameManager.instance.stamina > 0)
-        {
-            SceneManager.LoadScene("Lvl 1");
-        }
-        else
-        {
 
-        }
-    }
     public void EndGame()
     {
         //Agregar splash de derrota.// FALTA
@@ -105,5 +106,22 @@ public class GameManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quited");
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("Lvl 1");
+    }
+
+    public void HavePlay()
+    {
+        if (stamina > 0)
+        {
+            puedoJugar = true;
+        }
+        else
+        {
+            puedoJugar = false;
+        }
     }
 }
