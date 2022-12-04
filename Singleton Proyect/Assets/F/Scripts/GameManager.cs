@@ -2,15 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    private bool gameEnded = false;
+    public bool gameEnded = false;
     private TurretBlueprint turretToBuild;
 
+    public DateTime nextStaminaTime;
+    public DateTime lastStaminaTime;
+    public float timeToRecharge = 10f;
+    public int maxStamina = 5;
     public int stamina;
     public bool puedoJugar;
 
@@ -67,7 +70,7 @@ public class GameManager : MonoBehaviour
     {
         if (GameManager.instance.Lives <= 0)
         {
-            EndGame();
+            CSceneManager.instance.EndGame();
         }
 
         HavePlay();
@@ -93,24 +96,6 @@ public class GameManager : MonoBehaviour
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
-    }
-
-    public void EndGame()
-    {
-        //Agregar splash de derrota.// FALTA
-        gameEnded = true;
-        Debug.Log("GAME OVER");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
-        Debug.Log("Quited");
-    }
-
-    public void PlayGame()
-    {
-        SceneManager.LoadScene("Lvl 1");
     }
 
     public void HavePlay()

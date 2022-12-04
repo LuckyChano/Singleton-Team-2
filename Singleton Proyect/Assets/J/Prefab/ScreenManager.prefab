@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8611284681624118931}
   - component: {fileID: 9014042287123458294}
   - component: {fileID: 15684233}
+  - component: {fileID: 1256909198386261294}
   m_Layer: 0
   m_Name: ScreenManager
   m_TagString: Untagged
@@ -66,3 +67,15 @@ MonoBehaviour:
   CannonTurretPrefab: {fileID: 0}
   ArrowTurretPrefab: {fileID: 0}
   MagicTurretPrefab: {fileID: 0}
+--- !u!114 &1256909198386261294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077128300567910478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a0e5227be00d149bbd54cc384ae3b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

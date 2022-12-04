@@ -1063,8 +1063,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1256909198386261294, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+        m_TargetAssemblyTypeName: CSceneManager, Assembly-CSharp
         m_MethodName: PlayGame
         m_Mode: 1
         m_Arguments:
@@ -3414,11 +3414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 456fbc91e306faa449d6062466eec209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStamina: 5
-  timeToRecharge: 10
-  staminaText: {fileID: 1252659854}
-  timerText: {fileID: 285611353}
-  fullTimeText: {fileID: 2040697042}
 --- !u!1 &708214486016556311
 GameObject:
   m_ObjectHideFlags: 0
@@ -3561,14 +3556,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
-      propertyPath: outStamina
-      value: 
-      objectReference: {fileID: 181774895}
-    - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
-      propertyPath: puedoJugar
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6077128300567910478, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: m_Name
       value: ScreenManager
@@ -3576,18 +3563,6 @@ PrefabInstance:
     - target: {fileID: 8611284681624118931, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8611284681624118931, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8611284681624118931, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8611284681624118931, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8611284681624118931, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3630,9 +3605,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9014042287123458294, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: timerText
+      value: 
+      objectReference: {fileID: 285611353}
+    - target: {fileID: 9014042287123458294, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: outStamina
       value: 
       objectReference: {fileID: 181774895}
+    - target: {fileID: 9014042287123458294, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: staminaText
+      value: 
+      objectReference: {fileID: 1252659854}
+    - target: {fileID: 9014042287123458294, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: fullTimeText
+      value: 
+      objectReference: {fileID: 2040697042}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
 --- !u!4 &8637951475747285409
