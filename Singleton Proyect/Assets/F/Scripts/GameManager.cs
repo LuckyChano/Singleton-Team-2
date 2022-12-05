@@ -20,10 +20,15 @@ public class GameManager : MonoBehaviour
     public int Money;
     public int startMoney = 400;
 
+
+
+    //Esto que es?----------------------------------------------------------------------------
     internal void SetActive(bool v)
     {
         throw new NotImplementedException();
     }
+
+
 
     public int Lives;
     public int startLives = 20;
