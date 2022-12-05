@@ -14,6 +14,11 @@ public class MainMenuScreen : MonoBehaviour, IScreen
     [SerializeField] TextMeshProUGUI timer = null;
     [SerializeField] TextMeshProUGUI timerText = null;
 
+    public void BTN_Return()
+    {
+        Desactivate();
+    }
+
     public void Activate()
     {
         throw new System.NotImplementedException();
@@ -21,7 +26,7 @@ public class MainMenuScreen : MonoBehaviour, IScreen
 
     public void Desactivate()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Gracias por jugar");
     }
 
     public void TextStamina()
