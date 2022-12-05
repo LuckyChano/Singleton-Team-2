@@ -5,6 +5,8 @@ using UnityEngine;
 public class Levitating : MonoBehaviour
 {
     public bool floatup;
+    public float timeToLevitate;
+    public float speed;
 
     void Update()
     {
@@ -20,15 +22,15 @@ public class Levitating : MonoBehaviour
 
     IEnumerator FloatingUp()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y + 0.5f * Time.deltaTime, transform.position.z);
-        yield return new WaitForSeconds(3f);
+        transform.position = new Vector3(transform.position.x, transform.position.y + speed * Time.deltaTime, transform.position.z);
+        yield return new WaitForSeconds(timeToLevitate);
         floatup = false;
     }
 
     IEnumerator FloatingDown()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y - 0.5f * Time.deltaTime, transform.position.z);
-        yield return new WaitForSeconds(3f);
+        transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, transform.position.z);
+        yield return new WaitForSeconds(timeToLevitate);
         floatup = true;
     }
 }
