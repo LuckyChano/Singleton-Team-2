@@ -948,7 +948,7 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     },
-    "m_OutputSpace": 1
+    "m_OutputSpace": 0
 }
 
 {
@@ -1096,7 +1096,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Texture2DMaterialSlot",
     "m_ObjectId": "31d97b406ece4f2f80ae8e5a0e36d3d9",
     "m_Id": 0,
-    "m_DisplayName": "Mask",
+    "m_DisplayName": "TwirlMask",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1109,7 +1109,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "3201ffff7ec040c68172e554d710248d",
     "m_Id": 0,
-    "m_DisplayName": "Scale",
+    "m_DisplayName": "TwirlScale",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1168,7 +1168,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "3813c248d4804a4cbfdff1bba0027e36",
     "m_Id": 0,
-    "m_DisplayName": "Speed",
+    "m_DisplayName": "TwirlSpeed",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1666,7 +1666,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "6fdc555dcadd4814bc524d0a7d451cf2",
     "m_Id": 0,
-    "m_DisplayName": "DisolveAmount",
+    "m_DisplayName": "TwirlDisolveAmount",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -1904,7 +1904,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "83a77e3dc2f5476e9e6471a1b4b6568e",
     "m_Id": 0,
-    "m_DisplayName": "NoiseScale",
+    "m_DisplayName": "InvisibleNoiseScale",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
@@ -2121,7 +2121,7 @@
     "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
     "m_ObjectId": "9c9cb54e9a994999be289e85d45f0dc7",
     "m_Id": 0,
-    "m_DisplayName": "Color",
+    "m_DisplayName": "TwirlColor",
     "m_SlotType": 1,
     "m_Hidden": false,
     "m_ShaderOutputName": "Out",
