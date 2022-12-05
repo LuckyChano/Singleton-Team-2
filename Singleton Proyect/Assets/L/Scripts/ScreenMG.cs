@@ -6,7 +6,14 @@ public class ScreenMG : MonoBehaviour
 {
     public static ScreenMG instance;
 
+    public StaminaScreen staminaScreen;
+
+    public MainMenuScreen mainMenu;
+
     private Stack<IScreen> _screens = new Stack<IScreen>();
+
+    //sacar el stack de screens y hacerlo lista y por cada elemento de la lista lo voy a buscar el que necesito para apagarlo o prenderlo.
+
 
     void Awake()
     {

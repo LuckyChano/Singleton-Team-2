@@ -1,46 +1,27 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
+using UnityEngine.UI;
 
-public class ScreenManager : MonoBehaviour
+public class MainMenuScreen : MonoBehaviour, IScreen
 {
-    public static ScreenManager instance;
 
-    [SerializeField] TextMeshProUGUI staminaText = null;
+    //Implementar borones si es necesario
+
     [SerializeField] TextMeshProUGUI staminaCount = null;
     [SerializeField] TextMeshProUGUI timer = null;
     [SerializeField] TextMeshProUGUI timerText = null;
 
-    public void Awake()
+    public void Activate()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        throw new System.NotImplementedException();
     }
 
-    private void Update()
+    public void Desactivate()
     {
-        StaminaState(); //esto va en gm
-    }
-
-    //Esto va en gm
-    public void StaminaState()
-    {
-        if (GameManager.instance.puedoJugar)
-        {
-            staminaText.gameObject.SetActive(false);
-        }
-        else
-        {
-            staminaText.gameObject.SetActive(true);
-        }
+        throw new System.NotImplementedException();
     }
 
     public void TextStamina()
@@ -61,5 +42,15 @@ public class ScreenManager : MonoBehaviour
         TimeSpan timer = GameManager.instance.nextStaminaTime - DateTime.Now;
 
         this.timer.text = timer.Minutes.ToString() + ":" + timer.Seconds.ToString();
+    }
+
+    private void SetInteractionsButtons(bool active)
+    {
+        var b = GetComponentsInChildren<Button>();
+
+        foreach (var item in b)
+        {
+            item.interactable = active;
+        }
     }
 }

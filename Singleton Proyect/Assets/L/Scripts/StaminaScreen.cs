@@ -1,16 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class StaminaScreen : MonoBehaviour, IScreen
 {
-
-    //Chequeamos stamina y depende de si hay o no mostarmos el cartel.
-
     public void BTN_Return()
     {
-        ScreenMG.instance.Pop();
+        Desactivate();
     }
 
     public void Activate()

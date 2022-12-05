@@ -25,6 +25,12 @@ public class CSceneManager : MonoBehaviour
         {
             SceneManager.LoadScene("Lvl 1");
         }
+        else
+        {
+            //abre la pantalla scren de stamina
+            ScreenMG.instance.staminaScreen.Activate();
+        }
+
     }
 
     public void EndGame()

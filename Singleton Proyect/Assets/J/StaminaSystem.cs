@@ -99,12 +99,12 @@ public class StaminaSystem : MonoBehaviour
 
     void UpdateStamina()
     {
-        ScreenManager.instance.TextStamina();
+        ScreenMG.instance.mainMenu.TextStamina();
     }
 
     void UpdateTimer()
     {
-        ScreenManager.instance.TextTimer();
+        ScreenMG.instance.mainMenu.TextTimer();
     }
 
     void LoadTime()

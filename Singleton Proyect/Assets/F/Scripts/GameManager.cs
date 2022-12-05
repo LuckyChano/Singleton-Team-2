@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public bool gameEnded = false;
-    private TurretBlueprint turretToBuild;
-
     public DateTime nextStaminaTime;
     public DateTime lastStaminaTime;
     public float timeToRecharge = 10f;
@@ -19,17 +17,6 @@ public class GameManager : MonoBehaviour
 
     public int Money;
     public int startMoney = 400;
-
-
-
-    //Esto que es?----------------------------------------------------------------------------
-    internal void SetActive(bool v)
-    {
-        throw new NotImplementedException();
-    }
-
-
-
     public int Lives;
     public int startLives = 20;
 
@@ -37,9 +24,11 @@ public class GameManager : MonoBehaviour
     public GameObject ArrowTurretPrefab;
     public GameObject MagicTurretPrefab;
 
+    private TurretBlueprint _turretToBuild;
+    
     //Propiedad que permite dicernir si la torreta se puede construir o no.
-    public bool CanBuild { get { return turretToBuild != null; } }
-    public bool HasMoney { get { return GameManager.instance.Money >= turretToBuild.cost; } }
+    public bool CanBuild { get { return _turretToBuild != null; } }
+    public bool HasMoney { get { return GameManager.instance.Money >= _turretToBuild.cost; } }
 
     public void Awake()
     {
@@ -50,18 +39,6 @@ public class GameManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-        }
-    }
-
-    public void ReduceLife()
-    {
-        if (GameManager.instance.Lives > 0)
-        {
-            GameManager.instance.Lives--;
-        }
-        else
-        {
-            GameManager.instance.Lives = 0;
         }
     }
 
@@ -81,18 +58,30 @@ public class GameManager : MonoBehaviour
         HavePlay();
     }
 
+    public void ReduceLife()
+    {
+        if (GameManager.instance.Lives > 0)
+        {
+            GameManager.instance.Lives--;
+        }
+        else
+        {
+            GameManager.instance.Lives = 0;
+        }
+    }
+
     //Construlle la torreta en el Nodo indicado si tenes el dinero suficiente./////////////////////////////////////////////////////////////////////////////////
     public void BuildTurretOn(Node node)
     {
-        if (GameManager.instance.Money < turretToBuild.cost)
+        if (GameManager.instance.Money < _turretToBuild.cost)
         {
             Debug.Log("Not enaugh money");
             return;
         }
 
-        GameManager.instance.Money -= turretToBuild.cost;
+        GameManager.instance.Money -= _turretToBuild.cost;
 
-        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+        GameObject turret = (GameObject)Instantiate(_turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
 
         Debug.Log("Turret build... Money left:" + GameManager.instance.Money);
@@ -100,7 +89,7 @@ public class GameManager : MonoBehaviour
 
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
-        turretToBuild = turret;
+        _turretToBuild = turret;
     }
 
     public void HavePlay()
