@@ -95,10 +95,6 @@ public class StaminaSystem : MonoBehaviour
                 StartCoroutine(RestoreEnergy());
             }
         }
-        else
-        {
-            Debug.Log("Sin Estamina");
-        }
     }
 
     void UpdateStamina()
