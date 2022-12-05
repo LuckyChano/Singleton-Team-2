@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
+    public int currencyCoins;
     public bool gameEnded = false;
     public DateTime nextStaminaTime;
     public DateTime lastStaminaTime;
@@ -46,6 +47,7 @@ public class GameManager : MonoBehaviour
     {
         Money = startMoney;
         Lives = startLives;
+        LoadGame();
     }
 
     void Update()
@@ -102,5 +104,16 @@ public class GameManager : MonoBehaviour
         {
             puedoJugar = false;
         }
+    }
+
+    public void SaveGame()
+    {
+        PlayerPrefs.SetInt("Currency", currencyCoins);
+    }
+
+    public void LoadGame()
+    {
+        if (PlayerPrefs.HasKey("Currency")) currencyCoins = PlayerPrefs.GetInt("Currency");
+        //PlayerPrefs.DeleteKey("Life")
     }
 }
