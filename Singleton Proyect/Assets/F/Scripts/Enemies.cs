@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Enemies : MonoBehaviour, Idamageable
+public abstract class Enemies : MonoBehaviour, IDamageable
 {
     //Este Script se encarga de Guiar a los enemigos por la pasarela de WayPoints.//////////////////////////////////////////////////////////////////////////////////////////
 
@@ -38,7 +38,7 @@ public abstract class Enemies : MonoBehaviour, Idamageable
     }
 
     //Le suma uno al index para actualizar el siguiente objetivo.//
-    public void GetNextWaypoint()
+    protected void GetNextWaypoint()
     {
         if (wavepointIndex >= WayPoints.points.Length - 1)
         {
@@ -49,7 +49,7 @@ public abstract class Enemies : MonoBehaviour, Idamageable
         target = WayPoints.points[wavepointIndex];
     }
 
-    public void EndPath()
+    protected void EndPath()
     {
         GameManager.instance.ReduceLife();
         Destroy(gameObject);

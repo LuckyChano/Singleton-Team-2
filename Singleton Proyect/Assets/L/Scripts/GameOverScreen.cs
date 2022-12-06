@@ -1,15 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaminaScreen : Screens
+public class GameOverScreen : Screens
 {
     private void Start()
     {
-        ScreenMG.instance.AddScreen(ScreensType.staminaScreen, this);
+        ScreenMG.instance.AddScreen(ScreensType.gameOverScreen, this);
         Desactivate();
     }
 

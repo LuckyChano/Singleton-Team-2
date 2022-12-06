@@ -28,7 +28,8 @@ public class CSceneManager : MonoBehaviour
         else
         {
             //abre la pantalla scren de stamina
-            ScreenMG.instance.staminaScreen.Activate();
+            //ScreenMG.instance.staminaScreen.Activate();
+            ScreenMG.instance.GetScreens(ScreensType.staminaScreen).Activate();
         }
 
     }
@@ -37,6 +38,9 @@ public class CSceneManager : MonoBehaviour
     {
         //Agregar splash de derrota.// FALTA
         GameManager.instance.gameEnded = true;
+
+        ScreenMG.instance.GetScreens(ScreensType.gameOverScreen).Activate();
+
         Debug.Log("GAME OVER");
     }
 

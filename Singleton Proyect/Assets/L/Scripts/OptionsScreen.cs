@@ -4,20 +4,26 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OptionsScreen : Screens, IScreen
+public class OptionsScreen : Screens
 {
+    private void Start()
+    {
+        ScreenMG.instance.AddScreen(ScreensType.optionsScreen, this);
+        Desactivate();
+    }
+
     public void BTN_Return()
     {
         Desactivate();
     }
 
-    public void Activate()
+    public override void Activate()
     {
         gameObject.SetActive(true);
         SetInteractionsButtons(true);
     }
 
-    public void Desactivate()
+    public override void Desactivate()
     {
         gameObject.SetActive(false);
         SetInteractionsButtons(false);

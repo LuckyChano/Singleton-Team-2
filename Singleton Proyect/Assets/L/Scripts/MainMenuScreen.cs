@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class MainMenuScreen : Screens, IScreen
+public class MainMenuScreen : Screens
 {
 
     //Implementar borones si es necesario
@@ -14,6 +14,11 @@ public class MainMenuScreen : Screens, IScreen
     [SerializeField] TextMeshProUGUI timer = null;
     [SerializeField] TextMeshProUGUI timerText = null;
     [SerializeField] TextMeshProUGUI coinNumber = null;
+
+    private void Start()
+    {
+        ScreenMG.instance.AddScreen(ScreensType.mainMenuScreen, this);
+    }
 
     private void Update()
     {
@@ -25,12 +30,11 @@ public class MainMenuScreen : Screens, IScreen
         Desactivate();
     }
 
-    public void Activate()
+    public override void Activate()
     {
-        throw new System.NotImplementedException();
     }
 
-    public void Desactivate()
+    public override void Desactivate()
     {
         Debug.Log("Gracias por jugar");
     }

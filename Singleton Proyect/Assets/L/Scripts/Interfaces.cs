@@ -8,7 +8,7 @@ public interface IScreen
     void Desactivate();
 }
 
-public interface Idamageable
+public interface IDamageable
 {
     void TakeDamage(float damage);
 }
