@@ -12,23 +12,25 @@ public class EnemyMovement : MonoBehaviour
 
     private int wavepointIndex = 0;
 
-    public int health = 100;
+    private float _life = 100;
 
     public int moneyGain = 50;
-
+  
     public GameObject deathEffect;
 
 
     void Start()
     {
+        _life = FlyweightPointer.orc.maxLife;
+
         target = WayPoints.points[0];    
     }
 
     //Se encarga de regular el daño del enemigo.//
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
-        health -= amount;
-        if (health <= 0)
+        _life -= amount;
+        if (_life <= 0)
         {
             Die();
         }
