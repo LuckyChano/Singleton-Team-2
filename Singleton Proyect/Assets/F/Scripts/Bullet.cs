@@ -81,7 +81,7 @@ public abstract class Bullet : MonoBehaviour
     //Daña a los enemigos.
     void Damage(Transform enemy)
     {
-        EnemyMovement e = enemy.GetComponent<EnemyMovement>();
+        var e = enemy.GetComponent<Idamageable>();
         if (e != null)
         {
             e.TakeDamage(damage);

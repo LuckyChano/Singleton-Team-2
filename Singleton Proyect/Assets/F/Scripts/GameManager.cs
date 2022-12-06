@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int stamina;
     public bool puedoJugar;
 
-    public int Money;
+    public float Money;
     public int startMoney = 400;
     public int Lives;
     public int startLives = 20;

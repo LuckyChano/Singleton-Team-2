@@ -2,29 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovement : MonoBehaviour
+public abstract class Enemies : MonoBehaviour, Idamageable
 {
     //Este Script se encarga de Guiar a los enemigos por la pasarela de WayPoints.//////////////////////////////////////////////////////////////////////////////////////////
 
-    public float speed;
+    protected Transform target;
 
-    private Transform target;
+    protected int wavepointIndex = 0;
 
-    private int wavepointIndex = 0;
+    protected float _life;
+    protected float _speed;
+    protected float _moneyGain;
 
-    private float _life = 100;
-
-    public int moneyGain = 50;
-  
     public GameObject deathEffect;
-
-
-    void Start()
-    {
-        _life = FlyweightPointer.orc.maxLife;
-
-        target = WayPoints.points[0];    
-    }
 
     //Se encarga de regular el daño del enemigo.//
     public void TakeDamage(float amount)
@@ -37,32 +27,18 @@ public class EnemyMovement : MonoBehaviour
     }
 
     //Agrega Dinero cada vez que matas un enemigo y aplica los efectos de muerte del mismo./////////////////////////////////////////////////////
-    void Die()
+    public void Die()
     {
-        GameManager.instance.Money += moneyGain;
+        GameManager.instance.Money += _moneyGain;
 
-        GameObject effect = (GameObject) Instantiate(deathEffect, transform.position, Quaternion.identity);
+        GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 4f);
 
         Destroy(gameObject);
     }
 
-    void Update()
-    {
-        //Desplaza a la unidad y la hace mirar en esa direccion.//
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime, Space.World);
-        transform.LookAt(target);
-
-        //Se fija si ya llegaste.//
-        if (Vector3.Distance(transform.position, target.position) <= 3f)
-        {
-            GetNextWaypoint();
-        }
-    }
-
     //Le suma uno al index para actualizar el siguiente objetivo.//
-    void GetNextWaypoint()
+    public void GetNextWaypoint()
     {
         if (wavepointIndex >= WayPoints.points.Length - 1)
         {
@@ -71,9 +47,9 @@ public class EnemyMovement : MonoBehaviour
         }
         wavepointIndex++;
         target = WayPoints.points[wavepointIndex];
-    } 
+    }
 
-    void EndPath()
+    public void EndPath()
     {
         GameManager.instance.ReduceLife();
         Destroy(gameObject);

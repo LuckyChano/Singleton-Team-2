@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyweightBullet : MonoBehaviour
+public class FlyweightBullet
 {
     public float speed;
     public float damage;
