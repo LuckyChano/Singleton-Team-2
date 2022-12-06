@@ -13,6 +13,7 @@ public class MainMenuScreen : MonoBehaviour, IScreen
     [SerializeField] TextMeshProUGUI staminaCount = null;
     [SerializeField] TextMeshProUGUI timer = null;
     [SerializeField] TextMeshProUGUI timerText = null;
+    [SerializeField] TextMeshProUGUI CoinNumber = null;
 
     public void BTN_Return()
     {
@@ -47,6 +48,11 @@ public class MainMenuScreen : MonoBehaviour, IScreen
         TimeSpan timer = GameManager.instance.nextStaminaTime - DateTime.Now;
 
         this.timer.text = timer.Minutes.ToString() + ":" + timer.Seconds.ToString();
+    }
+
+    public void TextCoins()
+    {
+        
     }
 
     private void SetInteractionsButtons(bool active)
