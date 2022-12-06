@@ -39,6 +39,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         //Destroy(gameObject);
 
         target = WayPoints.points[0];
+        wavepointIndex = 0;
         _OPRef.ReturnObject(this);
     }
 
@@ -59,6 +60,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         GameManager.instance.ReduceLife();
 
         target = WayPoints.points[0];
+        wavepointIndex = 0;
         _OPRef.ReturnObject(this);
     }
 
