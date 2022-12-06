@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public int currencyCoins;
+
     public bool gameEnded = false;
     public DateTime nextStaminaTime;
     public DateTime lastStaminaTime;
@@ -58,6 +59,7 @@ public class GameManager : MonoBehaviour
         }
 
         HavePlay();
+        ScreenMG.instance.mainMenu.TextCoins();
     }
 
     public void ReduceLife()
@@ -119,10 +121,7 @@ public class GameManager : MonoBehaviour
 
     public void AddCoin()
     {
-        if (currencyCoins <= 0)
-        {
-            currencyCoins++;
-        }
+        currencyCoins++;
     }
 
     public void RestCoin()

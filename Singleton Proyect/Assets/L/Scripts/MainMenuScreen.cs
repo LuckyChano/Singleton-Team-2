@@ -13,7 +13,7 @@ public class MainMenuScreen : MonoBehaviour, IScreen
     [SerializeField] TextMeshProUGUI staminaCount = null;
     [SerializeField] TextMeshProUGUI timer = null;
     [SerializeField] TextMeshProUGUI timerText = null;
-    [SerializeField] TextMeshProUGUI CoinNumber = null;
+    [SerializeField] TextMeshProUGUI coinNumber = null;
 
     public void BTN_Return()
     {
@@ -52,7 +52,7 @@ public class MainMenuScreen : MonoBehaviour, IScreen
 
     public void TextCoins()
     {
-        
+        coinNumber.text = GameManager.instance.currencyCoins.ToString();
     }
 
     private void SetInteractionsButtons(bool active)
