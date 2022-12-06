@@ -5,7 +5,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 
-public class MainMenuScreen : MonoBehaviour, IScreen
+public class MainMenuScreen : Screens, IScreen
 {
 
     //Implementar borones si es necesario

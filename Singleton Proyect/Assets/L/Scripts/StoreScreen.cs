@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StoreScreen : MonoBehaviour, IScreen
+public class StoreScreen : Screens, IScreen
 {
     public void BTN_Return()
     {

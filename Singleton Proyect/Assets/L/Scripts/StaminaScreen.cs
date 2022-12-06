@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaminaScreen : MonoBehaviour, IScreen
+public class StaminaScreen : Screens, IScreen
 {
     public void BTN_Return()
     {
