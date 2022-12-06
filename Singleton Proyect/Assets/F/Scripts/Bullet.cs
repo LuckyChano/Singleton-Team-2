@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public abstract class Bullet : MonoBehaviour
 {
     //Este Script Se encarga del daño a los enemigos y los efectos de las bullets.//////////////////////////////////////////////////////////////////////////////
 
@@ -10,12 +10,18 @@ public class Bullet : MonoBehaviour
     
     public GameObject impactEffect;
 
-    public float speed = 70f;
+    public float speed;
 
-    public float impactRadius = 0f;
+    public float impactRadius;
 
-    public int damage = 50;
+    public float damage;
 
+    private void Start()
+    {
+        speed = FlyweightPointer.cannonBullet.speed;
+        damage = FlyweightPointer.cannonBullet.damage;
+        impactRadius=FlyweightPointer.cannonBullet.impactRadius;
+    }
 
     public void Seek(Transform _target)
     {

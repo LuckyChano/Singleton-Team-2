@@ -14,7 +14,9 @@ public class ScreenMG : MonoBehaviour
 
     public OptionsScreen optionsScreen;
 
-    private Stack<IScreen> _screens = new Stack<IScreen>();
+    private Stack<IScreen> _screns = new Stack<IScreen>();
+
+    private Dictionary<string, Screens> _screens = new Dictionary<string, Screens>();
 
     //sacar el stack de screens y hacerlo lista y por cada elemento de la lista lo voy a buscar el que necesito para apagarlo o prenderlo.
 
@@ -34,13 +36,13 @@ public class ScreenMG : MonoBehaviour
     public void Push(IScreen screen)
     {
         //Si hay pantallas en el stack las sacamos de la pila y las desactivamos
-        if (_screens.Count > 0)
+        if (_screns.Count > 0)
         {
-            _screens.Pop().Desactivate();
+            _screns.Pop().Desactivate();
         }
 
         //Guardamos la patalla actual
-        _screens.Push(screen);
+        _screns.Push(screen);
 
         //Activamos la pantalla actual
         screen.Activate();
@@ -49,11 +51,21 @@ public class ScreenMG : MonoBehaviour
     public void Pop()
     {
         //Si no hay panatallas guardadas retornamos
-        if (_screens.Count <= 0)
+        if (_screns.Count <= 0)
             return;
 
         //Sacamos del stack la panatalla y la desactivamos
-        _screens.Pop().Desactivate();
+        _screns.Pop().Desactivate();
+    }
+
+    public void AddScreen(Screens screen)
+    {
+
+    }
+
+    public void RemoveScreen(Screens screen)
+    {
+
     }
 
 }

@@ -221,8 +221,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8239327690056283483}
-  - component: {fileID: -2029416854315747791}
   - component: {fileID: 5651225842812313782}
+  - component: {fileID: 9096679485409583630}
   m_Layer: 0
   m_Name: ArrowBulletPivot
   m_TagString: Untagged
@@ -246,23 +246,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-2029416854315747791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8682710462057677500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 497cf265a02607a478e3cf5538d6444d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  impactEffect: {fileID: 2411669020159406036, guid: 50e65acf4bffa22459acd40f0f0eaf3e, type: 3}
-  speed: 80
-  impactRadius: 0
-  damage: 25
 --- !u!65 &5651225842812313782
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -276,3 +259,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.036244, y: 0.002314325, z: 0.28607723}
   m_Center: {x: -0.0025837396, y: 0.00009707741, z: 0.003900176}
+--- !u!114 &9096679485409583630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8682710462057677500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5f9d05aec1d32478030c5bd0aa2cc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  impactEffect: {fileID: 2411669020159406036, guid: 50e65acf4bffa22459acd40f0f0eaf3e, type: 3}
+  speed: 80
+  impactRadius: 0
+  damage: 25
