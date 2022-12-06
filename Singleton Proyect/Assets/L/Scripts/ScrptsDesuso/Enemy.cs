@@ -27,6 +27,7 @@ public class Enemy : MonoBehaviour
     {
         _OPRef = OPRef;
     }
+
     public void ResetBullet()
     {
         visible = false;

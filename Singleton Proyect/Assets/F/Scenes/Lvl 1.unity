@@ -7746,6 +7746,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 371348667}
+  - component: {fileID: 371348668}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -7761,12 +7762,28 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 371348666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -135.02, y: 12.08, z: -43.62}
+  m_LocalPosition: {x: -135.02, y: 12.39, z: -43.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &371348668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 371348666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be8708cdb9f84704aad92c445603d034, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stock: 50
+  enemy: {fileID: 6814849961022515463, guid: 54ea687d2de971546998f2a76272b379, type: 3}
+  timeBetwenWaves: 5
+  waveCountDownText: {fileID: 1504645194}
 --- !u!1001 &374430384
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26110,18 +26127,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8902533428090001288, guid: 689cfe7416674c04085de16db74c8b05, type: 3}
   m_PrefabInstance: {fileID: 1263541230}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1057167796 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1294480998179142672, guid: 82345fa18459e1a4384e7c109ee6b7e5, type: 3}
+--- !u!114 &1057167800 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1057167800, guid: 82345fa18459e1a4384e7c109ee6b7e5, type: 3}
   m_PrefabInstance: {fileID: 1294481000087356505}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1057167800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1057167796}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1a0e5227be00d149bbd54cc384ae3b0, type: 3}
@@ -68594,6 +68605,10 @@ PrefabInstance:
       propertyPath: CannonTurretPrefab
       value: 
       objectReference: {fileID: 6488124038996253798}
+    - target: {fileID: 1294480998179142677, guid: 82345fa18459e1a4384e7c109ee6b7e5, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1294480998179142677, guid: 82345fa18459e1a4384e7c109ee6b7e5, type: 3}
       propertyPath: spownPoint
       value: 

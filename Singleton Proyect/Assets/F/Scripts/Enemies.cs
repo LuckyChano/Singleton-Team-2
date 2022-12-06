@@ -6,6 +6,8 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 {
     //Este Script se encarga de Guiar a los enemigos por la pasarela de WayPoints.//////////////////////////////////////////////////////////////////////////////////////////
 
+    ObjectPool<Enemies> _OPRef;
+
     protected Transform target;
 
     protected int wavepointIndex = 0;
@@ -34,7 +36,10 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 4f);
 
-        Destroy(gameObject);
+        //Destroy(gameObject);
+
+        target = WayPoints.points[0];
+        _OPRef.ReturnObject(this);
     }
 
     //Le suma uno al index para actualizar el siguiente objetivo.//
@@ -52,8 +57,13 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     protected void EndPath()
     {
         GameManager.instance.ReduceLife();
-        Destroy(gameObject);
+
+        target = WayPoints.points[0];
+        _OPRef.ReturnObject(this);
     }
 
-
+    public void GetObjectPoolReference(ObjectPool<Enemies> OPRef)
+    {
+        _OPRef = OPRef;
+    }
 }

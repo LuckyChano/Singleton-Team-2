@@ -2,18 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Monetization;
 
 public class WaveSpawner : MonoBehaviour
 {
     //Este Script Spawnea los enemigos que recorren la pasarela.//////////////////////////////////////////////////////////////////////////////////////////////
 
-    public Transform enemyPrefab;
-    public Transform spownPoint;
+    ObjectPool<Enemies> _pool;
+    Factory<Enemies> _factory;
+
+    public int stock = 50;
+
+    public Enemies enemy;
+
+    //public Transform enemyPrefab;
+    //public Transform spownPoint;
     private float countdown = 2f;
     private int waveIndex = 0;
     public float timeBetwenWaves = 5f;
 
     public Text waveCountDownText;
+
+    private void Start()
+    {
+        _factory = new Factory<Enemies>(enemy);
+        _pool = new ObjectPool<Enemies>(_factory.Get, TurnOn, TurnOff, stock);
+    }
 
     void Update()
     {
@@ -47,6 +61,21 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(enemyPrefab, spownPoint.position, spownPoint.rotation);
+        //Instantiate(enemyPrefab, spownPoint.position, spownPoint.rotation);
+
+        var e = _pool.GetObject();
+        e.GetObjectPoolReference(_pool);
+        e.transform.position = transform.position;
+        e.transform.rotation = transform.rotation;
+    }
+
+    public void TurnOn(Enemies b)
+    {
+        b.gameObject.SetActive(true);
+    }
+
+    public void TurnOff(Enemies b)
+    {
+        b.gameObject.SetActive(false);
     }
 }

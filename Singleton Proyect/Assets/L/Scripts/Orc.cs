@@ -22,7 +22,7 @@ public class Orc : Enemies
         transform.LookAt(target);
 
         //Se fija si ya llegaste.//
-        if (Vector3.Distance(transform.position, target.position) <= 3f)
+        if (Vector3.Distance(transform.position, target.position) <= 0.5f)
         {
             GetNextWaypoint();
         }
