@@ -1,20 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class ScreenMG : MonoBehaviour
 {
     public static ScreenMG instance;
 
-    //public StaminaScreen staminaScreen;
+    public MainMenuScreen mainMenu = null;
 
-    public MainMenuScreen mainMenu;
+    //public StoreScreen storeScreen;
 
-    public StoreScreen storeScreen;
-
-    public OptionsScreen optionsScreen;
-
-    //public GameOverScreen gameOverScreen;
+    //public OptionsScreen optionsScreen;
     
     private Dictionary<ScreensType, Screens> _allScreens = new Dictionary<ScreensType, Screens>();
 
@@ -68,6 +65,11 @@ public class ScreenMG : MonoBehaviour
 
             Debug.Log("se cargo la pantalla " + type.ToString());
         }
+    }
+
+    public void AddMainMenu(MainMenuScreen menu)
+    {
+        mainMenu = menu;
     }
 
     public void RemoveScreen(ScreensType type, Screens screen)

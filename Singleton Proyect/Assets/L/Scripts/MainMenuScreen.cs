@@ -18,6 +18,7 @@ public class MainMenuScreen : Screens
     private void Start()
     {
         ScreenMG.instance.AddScreen(ScreensType.mainMenuScreen, this);
+        ScreenMG.instance.AddMainMenu(this);
     }
 
     private void Update()

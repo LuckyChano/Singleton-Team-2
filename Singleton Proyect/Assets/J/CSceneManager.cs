@@ -44,6 +44,16 @@ public class CSceneManager : MonoBehaviour
         Debug.Log("GAME OVER");
     }
 
+    public void MianMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
+
+    public void RestarGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void QuitGame()
     {
         Application.Quit();
