@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
         }
 
         HavePlay();
-        ScreenMG.instance.mainMenu.TextCoins();
     }
 
     public void ReduceLife()

@@ -15,6 +15,11 @@ public class MainMenuScreen : MonoBehaviour, IScreen
     [SerializeField] TextMeshProUGUI timerText = null;
     [SerializeField] TextMeshProUGUI coinNumber = null;
 
+    private void Update()
+    {
+        TextCoins();
+    }
+
     public void BTN_Return()
     {
         Desactivate();
