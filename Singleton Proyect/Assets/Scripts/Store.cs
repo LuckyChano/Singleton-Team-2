@@ -13,7 +13,7 @@ public class Store : MonoBehaviour
     {
         for (int i = 0; i < items.Length; i++)
         {
-            var newButton = Instantiate(itemButton, parent);
+            StoreButton newButton = Instantiate(itemButton, parent);
             newButton.SetButton(items[i]);
         }
     }

@@ -65,6 +65,11 @@ public class MainMenuScreen : Screens
         coinNumber.text = GameManager.instance.currencyCoins.ToString();
     }
 
+    public void SaveCoins()
+    {
+        GameManager.instance.SaveGame();
+    }
+
     private void SetInteractionsButtons(bool active)
     {
         var b = GetComponentsInChildren<Button>();

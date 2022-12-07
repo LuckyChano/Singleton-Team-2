@@ -17,8 +17,8 @@ public class StoreButton : MonoBehaviour
         costText.text = item.cost.ToString();
     }
 
-    public void BuyItem()
+    public void BuyItem(ItemStore item)
     {
-
+        
     }
 }
