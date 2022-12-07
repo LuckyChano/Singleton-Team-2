@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9bf9ee155670ea4dacf095032a2be53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 45
-  fireRate: 0.8
+  range: 30
+  fireRate: 0.3
   enemyTag: Enemy
   partToRotate: {fileID: 3469476935346286827}
   bulletPrefab: {fileID: 3851485714448879669, guid: dbacbcf012740634f80d1081764167b4, type: 3}

@@ -49,7 +49,7 @@ public class CSceneManager : MonoBehaviour
 
     public void WinGame(params object[] parameters)
     {
-        //ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
+        ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
 
         Debug.Log("GANASTE!");
         Debug.Log("Sobreviviste a: " + GameManager.instance.waveSurvive + " ordas!");

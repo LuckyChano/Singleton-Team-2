@@ -8,7 +8,8 @@ public enum ScreensType
     staminaScreen,
     storeScreen,
     optionsScreen,
-    gameOverScreen
+    gameOverScreen,
+    winScreen
 
 }
 

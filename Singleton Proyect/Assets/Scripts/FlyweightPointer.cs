@@ -6,16 +6,16 @@ public static class FlyweightPointer
 {
     public static readonly FlyweightEnemy orc = new FlyweightEnemy
     {
-        maxLife = 100,
+        maxLife = 200,
         speed = 10,
-        moneyGain = 50
+        moneyGain = 25
     };
 
     public static readonly FlyweightEnemy esqueletons = new FlyweightEnemy
     {
         maxLife = 50,
         speed = 20,
-        moneyGain = 25
+        moneyGain = 10
     };
 
     public static readonly FlyweightBullet cannonBullet = new FlyweightBullet
