@@ -7782,7 +7782,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stock: 50
   enemy: {fileID: 6814849961022515463, guid: 54ea687d2de971546998f2a76272b379, type: 3}
-  waves: 10
+  waves: 25
   timeBetwenWaves: 5
   waveCountDownText: {fileID: 1504645194}
 --- !u!1001 &374430384
@@ -25901,7 +25901,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1033916623
 RectTransform:
   m_ObjectHideFlags: 0
