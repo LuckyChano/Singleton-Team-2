@@ -124,7 +124,6 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         if (PlayerPrefs.HasKey("Currency")) currencyCoins = PlayerPrefs.GetInt("Currency");
-        //PlayerPrefs.DeleteKey("Life")
     }
 
     public void AddCoin()

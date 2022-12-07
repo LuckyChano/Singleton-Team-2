@@ -65,9 +65,15 @@ public class MainMenuScreen : Screens
         coinNumber.text = GameManager.instance.currencyCoins.ToString();
     }
 
-    public void SaveCoins()
+    public void SaveData()
     {
         GameManager.instance.SaveGame();
+    }
+
+    public void DeleteData()
+    {
+        PlayerPrefs.DeleteAll();
+        GameManager.instance.currencyCoins = PlayerPrefs.GetInt("Currency");
     }
 
     private void SetInteractionsButtons(bool active)
