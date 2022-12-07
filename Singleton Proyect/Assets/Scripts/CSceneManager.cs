@@ -49,6 +49,7 @@ public class CSceneManager : MonoBehaviour
 
     public void WinGame(params object[] parameters)
     {
+        SceneManager.LoadScene("Lvl 2");
         ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
 
         Debug.Log("GANASTE!");
