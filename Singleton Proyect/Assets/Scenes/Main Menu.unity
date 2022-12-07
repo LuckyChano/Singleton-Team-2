@@ -3531,7 +3531,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 912326098}
   m_HandleRect: {fileID: 912326097}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4463,7 +4463,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1615660392}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999994
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5452,11 +5452,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b7641e992dc429246b37dfe83b06a740, type: 2}
   - {fileID: 11400000, guid: d8dd86535c590984ba31207a70a1517d, type: 2}
   - {fileID: 11400000, guid: 9ea01869f7657e84c884b8fcda8535b5, type: 2}
-  - {fileID: 11400000, guid: 9ea01869f7657e84c884b8fcda8535b5, type: 2}
-  - {fileID: 11400000, guid: 9ea01869f7657e84c884b8fcda8535b5, type: 2}
-  - {fileID: 11400000, guid: 9ea01869f7657e84c884b8fcda8535b5, type: 2}
-  - {fileID: 11400000, guid: 9ea01869f7657e84c884b8fcda8535b5, type: 2}
-  - {fileID: 11400000, guid: 9ea01869f7657e84c884b8fcda8535b5, type: 2}
+  - {fileID: 11400000, guid: 46f180e10a4098245b97ac8a905628b9, type: 2}
+  - {fileID: 11400000, guid: e83453e8b166c41499dc24bfd3e595ae, type: 2}
+  - {fileID: 11400000, guid: 0a8e2627eb7abc44f8e6329011bf5023, type: 2}
 --- !u!4 &1961393002
 Transform:
   m_ObjectHideFlags: 0
