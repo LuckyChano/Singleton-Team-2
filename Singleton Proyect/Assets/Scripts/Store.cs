@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Store : MonoBehaviour
 {
-    //[SerializeField] ShopButton itemButton;
-    //[SerializeField] Transform parent;
+    [SerializeField] StoreButton itemButton;
+    [SerializeField] Transform parent;
 
-    //[SerializeField] ItemScriptable[] items = new ItemScriptable[0];
+    [SerializeField] ItemStore[] items = new ItemStore[0];
 
-    //private void Start()
-    //{
-    //    for (int i = 0; i < items.Length; i++)
-    //    {
-    //        var newButton = Instantiate(itemButton, parent);
-    //        newButton.SetButton(items[i]);
-    //    }
-    //}
+    private void Start()
+    {
+        for (int i = 0; i < items.Length; i++)
+        {
+            var newButton = Instantiate(itemButton, parent);
+            newButton.SetButton(items[i]);
+        }
+    }
 }

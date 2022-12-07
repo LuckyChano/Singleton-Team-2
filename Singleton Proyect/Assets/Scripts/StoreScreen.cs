@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class StoreScreen : Screens
 {
+    //[SerializeField] TextMeshProUGUI nameText = null;
+    //[SerializeField] Image icon = null;
+    //[SerializeField] TextMeshProUGUI costText = null;
+
     private void Start()
     {
         ScreenMG.instance.AddScreen(ScreensType.storeScreen, this);
@@ -38,4 +42,16 @@ public class StoreScreen : Screens
             item.interactable = active;
         }
     }
+
+    //public void SetButton(ItemStore item)
+    //{
+    //    nameText.text = item.itemName;
+    //    icon.sprite = item.img;
+    //    costText.text = item.cost.ToString();
+    //}
+
+    //public void BuyItem()
+    //{
+
+    //}
 }
