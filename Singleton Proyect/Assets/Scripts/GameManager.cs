@@ -119,11 +119,15 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         PlayerPrefs.SetInt("Currency", currencyCoins);
+        PlayerPrefs.SetInt("Life", Lives);
+        PlayerPrefs.SetFloat("Money", Money);
     }
 
     public void LoadGame()
     {
         if (PlayerPrefs.HasKey("Currency")) currencyCoins = PlayerPrefs.GetInt("Currency");
+        if (PlayerPrefs.HasKey("Life")) Lives = PlayerPrefs.GetInt("Life");
+        if (PlayerPrefs.HasKey("Money")) Money = PlayerPrefs.GetFloat("Money");
     }
 
     public void AddCoin()

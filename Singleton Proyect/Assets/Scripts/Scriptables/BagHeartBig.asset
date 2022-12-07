@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: BagHeartBig
   m_EditorClassIdentifier: 
   itemName: Big bag of hearts
-  cost: 75
+  cost: 50
+  amountBuy: 25
   img: {fileID: 21300000, guid: 6f28cd529c087b446a93fe10a4ccb082, type: 3}

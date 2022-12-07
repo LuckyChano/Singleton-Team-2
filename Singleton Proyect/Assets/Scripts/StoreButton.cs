@@ -9,6 +9,7 @@ public class StoreButton : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameText = null;
     [SerializeField] Image icon = null;
     [SerializeField] TextMeshProUGUI costText = null;
+    [SerializeField] TextMeshProUGUI AmountBuy = null;
 
     ItemStore myItem;
 
@@ -18,15 +19,16 @@ public class StoreButton : MonoBehaviour
 
         nameText.text = item.itemName;
         icon.sprite = item.img;
-        costText.text = item.cost.ToString();
+        costText.text = item.cost.ToString() + "$";
+        AmountBuy.text = item.amountBuy.ToString();
     }
 
     public void BuyItem()
     {
         if (GameManager.instance.currencyCoins > 0)
         {
-           GameManager.instance.currencyCoins -= myItem.cost;
-           GameManager.instance.SaveGame();
+            GameManager.instance.currencyCoins -= myItem.cost;
+            GameManager.instance.SaveGame();
         }
     }
 }

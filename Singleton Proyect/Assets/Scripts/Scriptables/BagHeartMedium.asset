@@ -14,4 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Medium bag of hearts
   cost: 25
+  amountBuy: 10
   img: {fileID: 21300000, guid: 6f28cd529c087b446a93fe10a4ccb082, type: 3}

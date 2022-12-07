@@ -7,5 +7,6 @@ public class ItemStore : ScriptableObject
 {
     public string itemName;
     public int cost;
+    public int amountBuy;
     public Sprite img;
 }
