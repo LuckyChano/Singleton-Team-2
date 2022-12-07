@@ -8,10 +8,6 @@ public class ScreenMG : MonoBehaviour
     public static ScreenMG instance;
 
     public MainMenuScreen mainMenu = null;
-
-    //public StoreScreen storeScreen;
-
-    //public OptionsScreen optionsScreen;
     
     private Dictionary<ScreensType, Screens> _allScreens = new Dictionary<ScreensType, Screens>();
 
@@ -88,5 +84,4 @@ public class ScreenMG : MonoBehaviour
 
         return _allScreens[type];
     }
-
 }
