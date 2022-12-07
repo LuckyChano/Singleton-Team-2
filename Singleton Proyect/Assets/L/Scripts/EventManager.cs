@@ -7,8 +7,8 @@ public class EventManager
     public delegate void EventReceiver(params object[] parameters);
     public enum NameEvent
     {
-        Call,
-        Fear
+        Win,
+        Lose
     }
 
     static Dictionary<NameEvent, EventReceiver> _events = new Dictionary<NameEvent, EventReceiver>();

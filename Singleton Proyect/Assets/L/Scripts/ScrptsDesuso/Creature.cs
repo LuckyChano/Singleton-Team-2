@@ -6,7 +6,7 @@ public class Creature : MonoBehaviour
 {
     private void Start()
     {
-        EventManager.Subscribe(EventManager.NameEvent.Fear, PlayerScream);
+        //EventManager.Subscribe(EventManager.NameEvent.Fear, PlayerScream);
     }
 
     void PlayerScream(params object[] parameters)

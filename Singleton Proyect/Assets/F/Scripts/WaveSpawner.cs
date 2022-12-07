@@ -15,6 +15,8 @@ public class WaveSpawner : MonoBehaviour
 
     public Enemies enemy;
 
+    public int waves;
+
     //public Transform enemyPrefab;
     //public Transform spownPoint;
     private float countdown = 2f;
@@ -34,8 +36,16 @@ public class WaveSpawner : MonoBehaviour
         //Conteo para spawnear la wave.
         if (countdown <= 0f)
         {
-            StartCoroutine(SpawnWave());
-            countdown = timeBetwenWaves;
+            if (waveIndex < waves)
+            {
+                GameManager.instance.survive = false;
+                StartCoroutine(SpawnWave());
+                countdown = timeBetwenWaves;
+            }
+            else
+            {
+                GameManager.instance.survive = true;
+            }
         }
 
         countdown -= Time.deltaTime;
@@ -49,6 +59,7 @@ public class WaveSpawner : MonoBehaviour
     //Spawnea los enemigos segun la wave.
     IEnumerator SpawnWave()
     {
+        GameManager.instance.waveSurvive++;
         waveIndex++;
         for (int i = 0; i < waveIndex; i++)
         {
@@ -61,6 +72,7 @@ public class WaveSpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
+        GameManager.instance.enemiesSpanw++;
         //Instantiate(enemyPrefab, spownPoint.position, spownPoint.rotation);
 
         var e = _pool.GetObject();

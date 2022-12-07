@@ -32,6 +32,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
     public void Die()
     {
         GameManager.instance.Money += _moneyGain;
+        GameManager.instance.enemiesKill++;
 
         GameObject effect = (GameObject)Instantiate(deathEffect, transform.position, Quaternion.identity);
         Destroy(effect, 4f);

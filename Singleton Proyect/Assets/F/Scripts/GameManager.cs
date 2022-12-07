@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
 
     public int currencyCoins;
 
-    public bool gameEnded = false;
     public DateTime nextStaminaTime;
     public DateTime lastStaminaTime;
     public float timeToRecharge = 10f;
@@ -22,12 +21,17 @@ public class GameManager : MonoBehaviour
     public int Lives;
     public int startLives = 20;
 
+    public int enemiesKill = 0;
+    public int enemiesSpanw = 0;
+    public int waveSurvive = 0;
+    public bool survive = false;
+
     public GameObject CannonTurretPrefab;
     public GameObject ArrowTurretPrefab;
     public GameObject MagicTurretPrefab;
 
     private TurretBlueprint _turretToBuild;
-    
+
     //Propiedad que permite dicernir si la torreta se puede construir o no.
     public bool CanBuild { get { return _turretToBuild != null; } }
     public bool HasMoney { get { return GameManager.instance.Money >= _turretToBuild.cost; } }
@@ -55,7 +59,12 @@ public class GameManager : MonoBehaviour
     {
         if (GameManager.instance.Lives <= 0)
         {
-            CSceneManager.instance.EndGame();
+            EventManager.Trigger(EventManager.NameEvent.Lose);
+            //CSceneManager.instance.EndGame();
+        }
+        else if (Money > 3000)
+        {
+            EventManager.Trigger(EventManager.NameEvent.Win);
         }
 
         HavePlay();
@@ -127,7 +136,7 @@ public class GameManager : MonoBehaviour
     {
         if (currencyCoins > 0)
         {
-           currencyCoins--;
+            currencyCoins--;
         }
     }
 }

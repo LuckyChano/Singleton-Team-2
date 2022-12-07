@@ -19,6 +19,12 @@ public class CSceneManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        EventManager.Subscribe(EventManager.NameEvent.Win, WinGame);
+        EventManager.Subscribe(EventManager.NameEvent.Lose, EndGame);
+    }
+
     public void PlayGame()
     {
         if (GameManager.instance.puedoJugar)
@@ -34,14 +40,20 @@ public class CSceneManager : MonoBehaviour
 
     }
 
-    public void EndGame()
+    public void EndGame(params object[] parameters)
     {
-        //Agregar splash de derrota.// FALTA
-        GameManager.instance.gameEnded = true;
-
         ScreenMG.instance.GetScreens(ScreensType.gameOverScreen).Activate();
 
         Debug.Log("GAME OVER");
+    }
+
+    public void WinGame(params object[] parameters)
+    {
+        //ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
+
+        Debug.Log("GANASTE!");
+        Debug.Log("Sobreviviste a: " + GameManager.instance.waveSurvive + " ordas!");
+        Debug.Log("Derrotaste a: " + GameManager.instance.enemiesKill + " enemigos!");
     }
 
     public void MianMenu()

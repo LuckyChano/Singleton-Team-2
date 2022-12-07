@@ -48,7 +48,7 @@ public class Player : PlayerLifeSistem
 
     public void Scream()
     {
-        EventManager.Trigger(EventManager.NameEvent.Fear);
+        //EventManager.Trigger(EventManager.NameEvent.Fear);
     }
 
     public override void TakeDamage(float value)
