@@ -7,9 +7,9 @@ public class Skeleton : Enemies
     // Start is called before the first frame update
     void Start()
     {
-        _life = FlyweightPointer.orc.maxLife;
-        _speed = FlyweightPointer.orc.speed;
-        _moneyGain = FlyweightPointer.orc.moneyGain;
+        _life = FlyweightPointer.golem.maxLife;
+        _speed = FlyweightPointer.golem.speed;
+        _moneyGain = FlyweightPointer.golem.moneyGain;
         target = WayPoints.points[0];
     }
 

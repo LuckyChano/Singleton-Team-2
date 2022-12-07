@@ -11,11 +11,11 @@ public static class FlyweightPointer
         moneyGain = 25
     };
 
-    public static readonly FlyweightEnemy esqueletons = new FlyweightEnemy
+    public static readonly FlyweightEnemy golem = new FlyweightEnemy
     {
-        maxLife = 50,
-        speed = 20,
-        moneyGain = 10
+        maxLife = 500,
+        speed = 8,
+        moneyGain = 50
     };
 
     public static readonly FlyweightBullet cannonBullet = new FlyweightBullet
