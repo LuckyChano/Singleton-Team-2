@@ -9,4 +9,6 @@ public class ItemStore : ScriptableObject
     public int cost;
     public int amountBuy;
     public Sprite img;
+    public ItemId type;
 }
+public enum ItemId { Heal, Cash }

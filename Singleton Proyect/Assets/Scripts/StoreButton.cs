@@ -25,8 +25,16 @@ public class StoreButton : MonoBehaviour
 
     public void BuyItem()
     {
-        if (GameManager.instance.currencyCoins > 0)
+        if (GameManager.instance.currencyCoins >= myItem.cost)
         {
+            if (ItemId.Cash == myItem.type)
+            {
+
+            }
+            else if (ItemId.Heal == myItem.type)
+            {
+
+            }
             GameManager.instance.currencyCoins -= myItem.cost;
             GameManager.instance.SaveGame();
         }
