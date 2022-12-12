@@ -8,6 +8,8 @@ public enum ScreensType
     staminaScreen,
     storeScreen,
     optionsScreen,
+    pauseScreen,
+    infoScreen,
     gameOverScreen,
     winScreen
 

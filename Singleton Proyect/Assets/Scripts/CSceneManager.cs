@@ -31,6 +31,8 @@ public class CSceneManager : MonoBehaviour
         if (GameManager.instance.puedoJugar)
         {
             SceneManager.LoadScene("Lvl 1");
+            Time.timeScale = 0f;
+            ScreenMG.instance.GetScreens(ScreensType.infoScreen).Activate();
         }
         else
         {
