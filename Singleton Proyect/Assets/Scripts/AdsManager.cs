@@ -40,6 +40,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         {
             if (ShowResult.Finished == showResult)
             {
+                GameManager.instance.currencyCoins += 5;
                 Debug.Log("Te doy la recompensa");
             }
             else
