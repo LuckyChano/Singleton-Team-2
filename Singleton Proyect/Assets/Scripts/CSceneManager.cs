@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -49,7 +50,6 @@ public class CSceneManager : MonoBehaviour
 
     public void WinGame(params object[] parameters)
     {
-        SceneManager.LoadScene("Lvl 2");
         ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
 
         Debug.Log("GANASTE!");
@@ -71,5 +71,10 @@ public class CSceneManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quited");
+    }
+
+    public void NextLevel()
+    {
+        SceneManager.LoadScene("Lvl 2");
     }
 }

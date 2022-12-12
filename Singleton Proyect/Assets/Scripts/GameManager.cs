@@ -60,7 +60,6 @@ public class GameManager : MonoBehaviour
         if (GameManager.instance.Lives <= 0)
         {
             EventManager.Trigger(EventManager.NameEvent.Lose);
-            //CSceneManager.instance.EndGame();
         }
         else if (Money > 3000)
         {
