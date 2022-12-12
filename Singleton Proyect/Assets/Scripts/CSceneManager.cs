@@ -48,10 +48,12 @@ public class CSceneManager : MonoBehaviour
         ScreenMG.instance.GetScreens(ScreensType.gameOverScreen).Activate();
 
         Debug.Log("GAME OVER");
+        AudioManager.instance.Play("Loose");
     }
 
     public void WinGame(params object[] parameters)
     {
+        AudioManager.instance.Play("Win");
         ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
     }
 

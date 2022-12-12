@@ -24,6 +24,7 @@ public abstract class Enemies : MonoBehaviour, IDamageable
         _life -= amount;
         if (_life <= 0)
         {
+            AudioManager.instance.Play("OrcDeath");
             Die();
         }
     }
@@ -58,6 +59,8 @@ public abstract class Enemies : MonoBehaviour, IDamageable
 
     protected void EndPath()
     {
+        AudioManager.instance.Play("EnemyInBase");
+
         GameManager.instance.ReduceLife();
 
         target = WayPoints.points[0];
