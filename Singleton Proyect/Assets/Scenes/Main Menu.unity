@@ -5989,8 +5989,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: startLives
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: startMoney
-      value: 400
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: ArrowTurretPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: MagicTurretPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: CannonTurretPrefab
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6077128300567910478, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: m_Name
