@@ -3531,7 +3531,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 912326098}
   m_HandleRect: {fileID: 912326097}
   m_Direction: 2
-  m_Value: 0
+  m_Value: 1
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4462,8 +4462,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1615660393}
   m_HandleRect: {fileID: 1615660392}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999998
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5987,6 +5987,10 @@ PrefabInstance:
     - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: puedoJugar
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 15684233, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
+      propertyPath: startMoney
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6077128300567910478, guid: 41bae4c04749b34498f53feafa1038d3, type: 3}
       propertyPath: m_Name

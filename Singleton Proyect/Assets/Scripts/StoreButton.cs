@@ -29,11 +29,11 @@ public class StoreButton : MonoBehaviour
         {
             if (ItemId.Cash == myItem.type)
             {
-                GameManager.instance.startMoney += myItem.amountBuy;
+                GameManager.instance.Money += myItem.amountBuy;
             }
             else if (ItemId.Heal == myItem.type)
             {
-                GameManager.instance.startLives += myItem.amountBuy;
+                GameManager.instance.Lives += myItem.amountBuy;
             }
             GameManager.instance.currencyCoins -= myItem.cost;
             GameManager.instance.SaveGame();

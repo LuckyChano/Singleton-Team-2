@@ -17,9 +17,9 @@ public class GameManager : MonoBehaviour
     public bool puedoJugar;
 
     public float Money;
-    public int startMoney = 400;
+    public int startMoney;
     public int Lives;
-    public int startLives = 20;
+    public int startLives;
 
     public int enemiesKill = 0;
     public int enemiesSpanw = 0;
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
 
     //Propiedad que permite dicernir si la torreta se puede construir o no.
     public bool CanBuild { get { return _turretToBuild != null; } }
-    public bool HasMoney { get { return GameManager.instance.Money >= _turretToBuild.cost; } }
+    public bool HasMoney { get { return Money >= _turretToBuild.cost; } }
 
     public void Awake()
     {
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.instance.Lives <= 0)
+        if (Lives <= 0)
         {
             EventManager.Trigger(EventManager.NameEvent.Lose);
         }
@@ -71,31 +71,31 @@ public class GameManager : MonoBehaviour
 
     public void ReduceLife()
     {
-        if (GameManager.instance.Lives > 0)
+        if (Lives > 0)
         {
-            GameManager.instance.Lives--;
+            Lives--;
         }
         else
         {
-            GameManager.instance.Lives = 0;
+            Lives = 0;
         }
     }
 
     //Construlle la torreta en el Nodo indicado si tenes el dinero suficiente./////////////////////////////////////////////////////////////////////////////////
     public void BuildTurretOn(Node node)
     {
-        if (GameManager.instance.Money < _turretToBuild.cost)
+        if (Money < _turretToBuild.cost)
         {
             Debug.Log("Not enaugh money");
             return;
         }
 
-        GameManager.instance.Money -= _turretToBuild.cost;
+        Money -= _turretToBuild.cost;
 
         GameObject turret = (GameObject)Instantiate(_turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
         node.turret = turret;
 
-        Debug.Log("Turret build... Money left:" + GameManager.instance.Money);
+        Debug.Log("Turret build... Money left:" + Money);
     }
 
     public void SelectTurretToBuild(TurretBlueprint turret)
