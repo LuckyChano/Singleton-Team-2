@@ -53,19 +53,19 @@ public class CSceneManager : MonoBehaviour
     public void WinGame(params object[] parameters)
     {
         ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
-
-        Debug.Log("GANASTE!");
-        Debug.Log("Sobreviviste a: " + GameManager.instance.waveSurvive + " ordas!");
-        Debug.Log("Derrotaste a: " + GameManager.instance.enemiesKill + " enemigos!");
     }
 
     public void MianMenu()
     {
+        PlayerPrefs.DeleteKey("Money");
+        PlayerPrefs.DeleteKey("Life");
         SceneManager.LoadScene("Main Menu");
     }
 
     public void RestarGame()
     {
+        PlayerPrefs.DeleteKey("Money");
+        PlayerPrefs.DeleteKey("Life");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
