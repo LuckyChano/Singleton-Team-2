@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public float winCondition;
+    public float winCondition = 3000;
 
     public DateTime nextStaminaTime;
     public DateTime lastStaminaTime;

@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44e024f2c0e4eac4ba6017aebf138626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winCondition: 1000
+  winCondition: 3000
   timeToRecharge: 10
   maxStamina: 5
   stamina: 0
