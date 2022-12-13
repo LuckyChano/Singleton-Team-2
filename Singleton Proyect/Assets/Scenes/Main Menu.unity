@@ -3543,7 +3543,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 912326098}
   m_HandleRect: {fileID: 912326097}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -4485,8 +4485,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1615660393}
   m_HandleRect: {fileID: 1615660392}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.9999999
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -6061,7 +6061,7 @@ MonoBehaviour:
   - name: Arrow
     clip: {fileID: 8300000, guid: c82f0c86b5a0f2d48b79e839bbbcc213, type: 3}
     pitch: 0.85
-    volume: 0.099
+    volume: 0.042
     loop: 0
     source: {fileID: 0}
   - name: Cannon
@@ -6073,7 +6073,7 @@ MonoBehaviour:
   - name: Magic
     clip: {fileID: 8300000, guid: c51dd75fc485d174d913951e7b319a5f, type: 3}
     pitch: 0.85
-    volume: 0.12
+    volume: 0.377
     loop: 0
     source: {fileID: 0}
   - name: Build
