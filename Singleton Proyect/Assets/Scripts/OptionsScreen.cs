@@ -14,6 +14,7 @@ public class OptionsScreen : Screens
 
     public void BTN_Return()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
     }
 

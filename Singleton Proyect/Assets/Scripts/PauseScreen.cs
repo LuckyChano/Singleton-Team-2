@@ -15,12 +15,14 @@ public class PauseScreen : Screens
 
     public void BTN_Continue()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
         Time.timeScale = 1.0f;
     }
 
     public void BTN_Return()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
     }
 
@@ -48,6 +50,7 @@ public class PauseScreen : Screens
 
     public void BTN_Pause()
     {
+        AudioManager.instance.Play("Button");
         Activate();
         Time.timeScale = 0f;
     }

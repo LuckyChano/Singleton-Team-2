@@ -14,12 +14,14 @@ public class InfoScreen : Screens
 
     public void BTN_Continue()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
         Time.timeScale = 1.0f;
     }
 
     public void BTN_Return()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
     }
 

@@ -34,6 +34,7 @@ public class CurrencyManager : MonoBehaviour
 
     public void AddCoin()
     {
+        AudioManager.instance.Play("AddCurrency");
         currencyCoins++;
     }
 

@@ -45,10 +45,10 @@ public class CSceneManager : MonoBehaviour
 
     public void EndGame(params object[] parameters)
     {
+        AudioManager.instance.Play("Loose");
         ScreenMG.instance.GetScreens(ScreensType.gameOverScreen).Activate();
 
         Debug.Log("GAME OVER");
-        AudioManager.instance.Play("Loose");
     }
 
     public void WinGame(params object[] parameters)

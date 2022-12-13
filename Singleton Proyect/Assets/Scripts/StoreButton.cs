@@ -27,6 +27,7 @@ public class StoreButton : MonoBehaviour
     {
         if (CurrencyManager.instance.currencyCoins >= myItem.cost)
         {
+            AudioManager.instance.Play("AddCurrency");
             if (ItemId.Cash == myItem.type)
             {
                 GameManager.instance.Money += myItem.amountBuy;
@@ -37,6 +38,10 @@ public class StoreButton : MonoBehaviour
             }
             CurrencyManager.instance.currencyCoins -= myItem.cost;
             GameManager.instance.SaveGame();
+        }
+        else
+        {
+            AudioManager.instance.Play("Cant");
         }
     }
 }

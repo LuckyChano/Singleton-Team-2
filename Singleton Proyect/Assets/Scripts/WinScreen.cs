@@ -15,11 +15,13 @@ public class WinScreen : Screens
 
     public void BTN_NextLevel()
     {
+        AudioManager.instance.Play("Button");
         CSceneManager.instance.NextLevel();
     }
 
     public void BTN_Return()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
     }
 

@@ -7,7 +7,7 @@ public static class FlyweightPointer
     public static readonly FlyweightEnemy orc = new FlyweightEnemy
     {
         maxLife = 200,
-        speed = 10,
+        speed = 100,
         moneyGain = 25
     };
 

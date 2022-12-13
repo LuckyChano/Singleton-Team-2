@@ -86,9 +86,12 @@ public class GameManager : MonoBehaviour
     {
         if (Money < _turretToBuild.cost)
         {
+            AudioManager.instance.Play("Cant");
             Debug.Log("Not enaugh money");
             return;
         }
+
+        AudioManager.instance.Play("Build");
 
         Money -= _turretToBuild.cost;
 

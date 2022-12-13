@@ -28,6 +28,7 @@ public class MainMenuScreen : Screens
 
     public void BTN_Return()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
     }
 

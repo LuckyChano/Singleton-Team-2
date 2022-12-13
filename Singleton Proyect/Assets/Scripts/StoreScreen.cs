@@ -14,6 +14,7 @@ public class StoreScreen : Screens
 
     public void BTN_Return()
     {
+        AudioManager.instance.Play("Button");
         Desactivate();
     }
 
