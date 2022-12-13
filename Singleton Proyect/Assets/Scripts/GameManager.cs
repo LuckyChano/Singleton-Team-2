@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public int currencyCoins;
+    public float winCondition;
 
     public DateTime nextStaminaTime;
     public DateTime lastStaminaTime;
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         {
             EventManager.Trigger(EventManager.NameEvent.Lose);
         }
-        else if (Money > 3000)
+        else if (Money > winCondition)
         {
             EventManager.Trigger(EventManager.NameEvent.Win);
         }
@@ -117,28 +117,13 @@ public class GameManager : MonoBehaviour
 
     public void SaveGame()
     {
-        PlayerPrefs.SetInt("Currency", currencyCoins);
         PlayerPrefs.SetInt("Life", Lives);
         PlayerPrefs.SetFloat("Money", Money);
     }
 
     public void LoadGame()
     {
-        if (PlayerPrefs.HasKey("Currency")) currencyCoins = PlayerPrefs.GetInt("Currency");
         if (PlayerPrefs.HasKey("Life")) Lives = PlayerPrefs.GetInt("Life");
         if (PlayerPrefs.HasKey("Money")) Money = PlayerPrefs.GetFloat("Money");
-    }
-
-    public void AddCoin()
-    {
-        currencyCoins++;
-    }
-
-    public void RestCoin()
-    {
-        if (currencyCoins > 0)
-        {
-            currencyCoins--;
-        }
     }
 }

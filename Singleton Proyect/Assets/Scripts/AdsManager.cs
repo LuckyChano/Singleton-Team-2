@@ -44,7 +44,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
                 {
                     GameManager.instance.stamina++;
                 }
-                GameManager.instance.currencyCoins += 5;
+                CurrencyManager.instance.currencyCoins += 5;
                 Debug.Log("Te doy la recompensa");
             }
             else

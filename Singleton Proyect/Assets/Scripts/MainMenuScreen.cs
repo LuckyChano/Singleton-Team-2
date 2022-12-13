@@ -62,7 +62,7 @@ public class MainMenuScreen : Screens
 
     public void TextCoins()
     {
-        coinNumber.text = GameManager.instance.currencyCoins.ToString();
+        coinNumber.text = CurrencyManager.instance.currencyCoins.ToString();
     }
 
     public void SaveData()
@@ -73,7 +73,7 @@ public class MainMenuScreen : Screens
     public void DeleteData()
     {
         PlayerPrefs.DeleteAll();
-        GameManager.instance.currencyCoins = PlayerPrefs.GetInt("Currency");
+        CurrencyManager.instance.currencyCoins = PlayerPrefs.GetInt("Currency");
     }
 
     private void SetInteractionsButtons(bool active)
