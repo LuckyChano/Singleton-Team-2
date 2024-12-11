@@ -12,12 +12,4 @@ public enum ScreensType
     infoScreen,
     gameOverScreen,
     winScreen
-
-}
-
-public abstract class Screens : MonoBehaviour, IScreen
-{
-    public abstract void Activate();
-
-    public abstract void Desactivate();
 }

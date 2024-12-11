@@ -4,88 +4,38 @@ using UnityEngine;
 
 public abstract class Bullet : MonoBehaviour
 {
-    //Este Script Se encarga del daño a los enemigos y los efectos de las bullets.//////////////////////////////////////////////////////////////////////////////
+    private Transform _target;
+    private float _speed;
+    private float _damage;
 
-    public Transform target;
-    
-    public GameObject impactEffect;
-
-    public float speed;
-
-    public float impactRadius;
-
-    public float damage;
-
-    private void Start()
+    public void Initialize(Transform target, float speed, float damage)
     {
-        speed = FlyweightPointer.cannonBullet.speed;
-        damage = FlyweightPointer.cannonBullet.damage;
-        impactRadius=FlyweightPointer.cannonBullet.impactRadius;
+        _target = target;
+        _speed = speed;
+        _damage = damage;
     }
 
-    public void Seek(Transform _target)
+    private void Update()
     {
-        target = _target;
-    }
-
-    void Update()
-    {
-        if (target == null)
+        if (_target == null)
         {
             Destroy(gameObject);
             return;
         }
-        Vector3 dir = target.position - transform.position;
-        float distanceByFrame = speed * Time.deltaTime;
 
-        if (dir.magnitude <= distanceByFrame)
+        Vector3 direction = _target.position - transform.position;
+        transform.Translate(direction.normalized * _speed * Time.deltaTime, Space.World);
+
+        if (Vector3.Distance(transform.position, _target.position) < 0.5f)
         {
             HitTarget();
-            return;
         }
-
-        transform.Translate(dir.normalized * distanceByFrame, Space.World);
-        transform.LookAt(target);
     }
 
-    //Se fija si el enemigo golpeado por la bullet tiene un radio de impacto mayor a 0, si es asi Explota(Daño area) si no es un single hit y Destroys el bullet.
-    void HitTarget()
+    private void HitTarget()
     {
-        GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 2f);
-
-        if (impactRadius > 0)
-        {
-            Explode();
-        }
-        else
-        {
-            Damage(target);
-        }
+        var damageable = _target.GetComponent<IDamageable>();
+        damageable?.TakeDamage(_damage);
         Destroy(gameObject);
     }
-
-    //Dispara una esfera con cierto radio para checkear que Objetos con el tag "Enemy" golpea. Les hace daño.
-    void Explode()
-    {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, impactRadius);
-        foreach (Collider collider in colliders)
-        {
-            if(collider.tag == "Enemy")
-            {
-                Damage(collider.transform);
-            }
-        }
-    }
-
-    //Daña a los enemigos.
-    void Damage(Transform enemy)
-    {
-        var e = enemy.GetComponent<IDamageable>();
-        if (e != null)
-        {
-            e.TakeDamage(damage);
-        }
-    }
-
 }

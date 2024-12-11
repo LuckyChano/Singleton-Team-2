@@ -6,88 +6,50 @@ using UnityEngine.Monetization;
 
 public class WaveSpawner : MonoBehaviour
 {
-    //Este Script Spawnea los enemigos que recorren la pasarela.//////////////////////////////////////////////////////////////////////////////////////////////
+    [Header("Configuración de Enemigos")]
+    [SerializeField] private GameObject enemyPrefab;
 
-    ObjectPool<Enemies> _pool;
-    Factory<Enemies> _factory;
+    [Header("Configuración de Oleadas")]
+    [SerializeField] private Transform spawnPoint;
+    [SerializeField] private int waves;
+    [SerializeField] private float timeBetweenWaves;
 
-    public int stock = 50;
-
-    public Enemies enemy;
-
-    public int waves;
-
-    //public Transform enemyPrefab;
-    //public Transform spownPoint;
-    private float countdown = 2f;
-    private int waveIndex = 0;
-    public float timeBetwenWaves = 5f;
-
-    public Text waveCountDownText;
+    private int _currentWave = 0;
+    private float _countdown;
 
     private void Start()
     {
-        _factory = new Factory<Enemies>(enemy);
-        _pool = new ObjectPool<Enemies>(_factory.Get, TurnOn, TurnOff, stock);
+        _countdown = timeBetweenWaves;
     }
 
-    void Update()
+    private void Update()
     {
-        //Conteo para spawnear la wave.
-        if (countdown <= 0f)
+        if (_countdown <= 0f && _currentWave < waves)
         {
-            if (waveIndex < waves)
-            {
-                GameManager.instance.survive = false;
-                StartCoroutine(SpawnWave());
-                countdown = timeBetwenWaves;
-            }
-            else
-            {
-                GameManager.instance.survive = true;
-            }
+            StartCoroutine(SpawnWave());
+            _countdown = timeBetweenWaves;
         }
 
-        countdown -= Time.deltaTime;
-
-        //Para que no sea un numero negativo.
-        countdown = Mathf.Clamp(countdown, 0f, Mathf.Infinity);
-
-        waveCountDownText.text = string.Format("{0:00.00'}", countdown);
+        _countdown -= Time.deltaTime;
     }
 
-    //Spawnea los enemigos segun la wave.
-    IEnumerator SpawnWave()
+    private IEnumerator SpawnWave()
     {
-        GameManager.instance.waveSurvive++;
-        waveIndex++;
-        for (int i = 0; i < waveIndex; i++)
+        _currentWave++;
+        for (int i = 0; i < _currentWave; i++)
         {
             SpawnEnemy();
             yield return new WaitForSeconds(0.5f);
         }
-
-        Debug.Log("Wave Spawned");
     }
 
-    void SpawnEnemy()
+    private void SpawnEnemy()
     {
-        GameManager.instance.enemiesSpanw++;
-        //Instantiate(enemyPrefab, spownPoint.position, spownPoint.rotation);
+        var enemy = Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        var movement = enemy.GetComponent<EnemyMovement>();
+        var health = enemy.GetComponent<EnemyHealth>();
 
-        var e = _pool.GetObject();
-        e.GetObjectPoolReference(_pool);
-        e.transform.position = transform.position;
-        e.transform.rotation = transform.rotation;
-    }
-
-    public void TurnOn(Enemies b)
-    {
-        b.gameObject.SetActive(true);
-    }
-
-    public void TurnOff(Enemies b)
-    {
-        b.gameObject.SetActive(false);
+        movement.Initialize(WayPoints.points, FlyweightPointer.orc.speed);
+        health.Initialize(FlyweightPointer.orc.maxLife, FlyweightPointer.orc.moneyGain);
     }
 }

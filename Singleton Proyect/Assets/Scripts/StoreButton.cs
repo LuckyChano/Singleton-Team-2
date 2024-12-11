@@ -30,11 +30,11 @@ public class StoreButton : MonoBehaviour
             AudioManager.instance.Play("AddCurrency");
             if (ItemId.Cash == myItem.type)
             {
-                GameManager.instance.Money += myItem.amountBuy;
+                GameManager.instance.PlayerStats.AddMoney(myItem.amountBuy);
             }
             else if (ItemId.Heal == myItem.type)
             {
-                GameManager.instance.Lives += myItem.amountBuy;
+                GameManager.instance.PlayerStats.AddLife(myItem.amountBuy);
             }
             CurrencyManager.instance.currencyCoins -= myItem.cost;
             GameManager.instance.SaveGame();

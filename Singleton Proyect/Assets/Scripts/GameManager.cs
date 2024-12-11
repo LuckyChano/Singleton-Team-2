@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,126 +6,91 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public float winCondition = 3000;
-
     public DateTime nextStaminaTime;
-    public DateTime lastStaminaTime;
     public float timeToRecharge = 10f;
     public int maxStamina = 5;
     public int stamina;
     public bool puedoJugar;
 
-    public float Money;
     public int startMoney;
-    public int Lives;
     public int startLives;
 
-    public int enemiesKill = 0;
-    public int enemiesSpanw = 0;
-    public int waveSurvive = 0;
-    public bool survive = false;
+    public PlayerStats PlayerStats { get; private set; }
+    public TurretManager TurretManager { get; private set; }
+    public GameConditionsManager GameConditionsManager { get; private set; }
 
-    public GameObject CannonTurretPrefab;
-    public GameObject ArrowTurretPrefab;
-    public GameObject MagicTurretPrefab;
-
-    private TurretBlueprint _turretToBuild;
-
-    //Propiedad que permite dicernir si la torreta se puede construir o no.
-    public bool CanBuild { get { return _turretToBuild != null; } }
-    public bool HasMoney { get { return Money >= _turretToBuild.cost; } }
-
-    public void Awake()
+    private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+
+        PlayerStats = GetComponent<PlayerStats>();
+        TurretManager = GetComponent<TurretManager>();
+        GameConditionsManager = GetComponent<GameConditionsManager>();
     }
 
-    void Start()
+    private void Start()
     {
-        Money = startMoney;
-        Lives = startLives;
+        GameConditionsManager.Initialize(new List<IGameCondition>
+        {
+            new WinCondition(3000),
+            new LoseCondition()
+        });
+
+        PlayerStats.Initialize(startMoney, startLives);
         LoadGame();
+
+        if (nextStaminaTime == default(DateTime))
+        {
+            nextStaminaTime = DateTime.Now.AddSeconds(timeToRecharge);
+        }
     }
 
-    void Update()
+    private void Update()
     {
-        if (Lives <= 0)
-        {
-            EventManager.Trigger(EventManager.NameEvent.Lose);
-        }
-        else if (Money > winCondition)
-        {
-            EventManager.Trigger(EventManager.NameEvent.Win);
-        }
-
         HavePlay();
-    }
 
-    public void ReduceLife()
-    {
-        if (Lives > 0)
+        if (stamina < maxStamina && DateTime.Now >= nextStaminaTime)
         {
-            Lives--;
-        }
-        else
-        {
-            Lives = 0;
-        }
-    }
-
-    //Construlle la torreta en el Nodo indicado si tenes el dinero suficiente./////////////////////////////////////////////////////////////////////////////////
-    public void BuildTurretOn(Node node)
-    {
-        if (Money < _turretToBuild.cost)
-        {
-            AudioManager.instance.Play("Cant");
-            Debug.Log("Not enaugh money");
-            return;
-        }
-
-        AudioManager.instance.Play("Build");
-
-        Money -= _turretToBuild.cost;
-
-        GameObject turret = (GameObject)Instantiate(_turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
-
-        Debug.Log("Turret build... Money left:" + Money);
-    }
-
-    public void SelectTurretToBuild(TurretBlueprint turret)
-    {
-        _turretToBuild = turret;
-    }
-
-    public void HavePlay()
-    {
-        if (stamina > 0)
-        {
-            puedoJugar = true;
-        }
-        else
-        {
-            puedoJugar = false;
+            stamina++;
+            nextStaminaTime = DateTime.Now.AddSeconds(timeToRecharge);
         }
     }
 
     public void SaveGame()
     {
-        PlayerPrefs.SetInt("Life", Lives);
-        PlayerPrefs.SetFloat("Money", Money);
+        PlayerPrefs.SetInt("Life", PlayerStats.Lives);
+        PlayerPrefs.SetInt("Money", PlayerStats.Money);
+
+        PlayerPrefs.SetString("nextStaminaTime", nextStaminaTime.ToBinary().ToString());
+        PlayerPrefs.SetInt("Stamina", stamina);
     }
 
     public void LoadGame()
     {
-        if (PlayerPrefs.HasKey("Life")) Lives = PlayerPrefs.GetInt("Life");
-        if (PlayerPrefs.HasKey("Money")) Money = PlayerPrefs.GetFloat("Money");
+        if (PlayerPrefs.HasKey("Life") && PlayerPrefs.HasKey("Money"))
+        {
+            PlayerStats.Initialize(
+                PlayerPrefs.GetInt("Money"),
+                PlayerPrefs.GetInt("Life")
+            );
+        }
+
+        if (PlayerPrefs.HasKey("nextStaminaTime"))
+        {
+            long temp = Convert.ToInt64(PlayerPrefs.GetString("nextStaminaTime"));
+            nextStaminaTime = DateTime.FromBinary(temp);
+        }
+        else
+        {
+            nextStaminaTime = DateTime.Now.AddSeconds(timeToRecharge);
+        }
+
+        stamina = PlayerPrefs.GetInt("Stamina", maxStamina);
+    }
+
+    public void HavePlay()
+    {
+        puedoJugar = stamina > 0;
     }
 }

@@ -3,9 +3,11 @@ using UnityEngine;
 
 public class LivesUI : MonoBehaviour
 {
+    private PlayerStats _stats;
     public Text livesText;
+
     void Update()
     {
-        livesText.text = GameManager.instance.Lives + " Lives";
+        livesText.text = _stats.Lives + " Lives";
     }
 }

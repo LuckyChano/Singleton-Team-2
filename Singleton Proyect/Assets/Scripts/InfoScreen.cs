@@ -1,38 +1,43 @@
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class InfoScreen : Screens
+public class InfoScreen : MonoBehaviour, IScreen
 {
     private void Start()
     {
-        ScreenMG.instance.AddScreen(ScreensType.infoScreen, this);
+        var screenManager = FindObjectOfType<ScreenManager>();
+        if (screenManager != null)
+        {
+            screenManager.RegisterScreen(ScreensType.infoScreen, this);
+        }
+        else
+        {
+            Debug.LogError("ScreenManager no encontrado en la escena.");
+        }
     }
 
     public void BTN_Continue()
     {
         AudioManager.instance.Play("Button");
-        Desactivate();
+        Hide();
         Time.timeScale = 1.0f;
     }
 
     public void BTN_Return()
     {
         AudioManager.instance.Play("Button");
-        Desactivate();
+        Hide();
     }
 
-    public override void Activate()
+    public void Show()
     {
         gameObject.SetActive(true);
         SetInteractionsButtons(true);
         Time.timeScale = 0f;
     }
 
-    public override void Desactivate()
+    public void Hide()
     {
         gameObject.SetActive(false);
         SetInteractionsButtons(false);
@@ -40,11 +45,10 @@ public class InfoScreen : Screens
 
     private void SetInteractionsButtons(bool active)
     {
-        var b = GetComponentsInChildren<Button>();
-
-        foreach (var item in b)
+        var buttons = GetComponentsInChildren<Button>();
+        foreach (var button in buttons)
         {
-            item.interactable = active;
+            button.interactable = active;
         }
     }
 }

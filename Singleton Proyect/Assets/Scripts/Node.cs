@@ -5,74 +5,49 @@ using UnityEngine.EventSystems;
 
 public class Node : MonoBehaviour
 {
-    //Este Script se encarga de Manejar los Nodos en los cuales podes construir las torretas./////////////////////////////////////////////////////////////////////
-
-
     public Vector3 positionOffset;
-
     public Color hoverColor;
     public Color cantBuyColor;
 
-    [Header("Optional")]
-    public GameObject turret;
+    private Renderer _renderer;
+    private Color _startColor;
 
-    private Renderer rend;
-    private Color startColor;
-    
-    GameManager gameManager;
+    private Turret _turret;
+    private TurretBlueprint _turretBlueprint;
 
-    void Start()
+    private void Start()
     {
-        gameManager = GameManager.instance;
-        rend = GetComponent<Renderer>();
-        startColor = rend.material.color;
+        _renderer = GetComponent<Renderer>();
+        _startColor = _renderer.material.color;
     }
 
-    public Vector3 GetBuildPosition()
+    public Vector3 GetBuildPosition() => transform.position + positionOffset;
+
+    private void OnMouseDown()
     {
-        return transform.position + positionOffset;
+        var turretManager = FindObjectOfType<TurretManager>();
+        var playerStats = FindObjectOfType<PlayerStats>();
+
+        if (!turretManager.CanBuild(playerStats)) return;
+        if (_turret != null) return;
+
+        turretManager.BuildTurret(this, playerStats);
     }
 
-    public void OnMouseDown()
+    private void OnMouseEnter()
     {
-        //Evita que el UI blockee la interaccion con los nodos. ---- (ej: si estan abajo del UI)
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
+        var turretManager = FindObjectOfType<TurretManager>();
+        var playerStats = FindObjectOfType<PlayerStats>();
 
-        //Instancia la torreta en el nodo si no hay una torreta ya en ese lugar.
-        if (!gameManager.CanBuild)
-            return;
-        
-        if (turret != null)
-        {
-            Debug.Log("You cant build Here");
-            return;
-        }
-
-        gameManager.BuildTurretOn(this);
-        
+        _renderer.material.color = turretManager.CanBuild(playerStats) ? hoverColor : cantBuyColor;
     }
 
-    public void OnMouseEnter()
+    private void OnMouseExit()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-        
-        if (!gameManager.CanBuild)
-            return;
-
-        if (gameManager.HasMoney)
-        {
-            rend.material.color = hoverColor;   
-        }
-        else
-        {
-            rend.material.color = cantBuyColor;
-        }
+        _renderer.material.color = _startColor;
     }
-
-    public void OnMouseExit()
+    public void SetTurret(GameObject newTurret)
     {
-        rend.material.color = startColor;
+        _turretBlueprint.prefab = newTurret;
     }
 }

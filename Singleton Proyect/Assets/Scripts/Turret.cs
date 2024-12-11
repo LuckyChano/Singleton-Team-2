@@ -4,97 +4,57 @@ using UnityEngine;
 
 public class Turret : MonoBehaviour
 {
-    //Este script Targetea al Enemigo, hace que la Torreta lo apunte e Instancia el Bullet.///////////////////////////////////////////////////////////////////
-
-    private Transform target;
-
     [Header("Atributos")]
-    public float range = 15f;
+    [SerializeField] private float range;
+    [SerializeField] private float fireRate;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform firePoint;
 
-    public float fireRate = 1f;
+    private Transform _target;
+    private float _fireCooldown;
 
-    [Header("Set up")]    
-    public string enemyTag = "Enemy";
-
-    public Transform partToRotate;
-
-    public GameObject bulletPrefab;
-
-    public Transform firePoint;
-
-    [HideInInspector]
-    public float turnSpeed = 10;
-
-    [HideInInspector]
-    public float fireCountdown = 0f;
-
-    void Start()
+    private void Update()
     {
-        InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        FindClosestTarget();
+        HandleShooting();
     }
 
-    void Update()
-    {
-        if (target == null)
-            return;
-        
-        //Le apunta al target.
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-
-        //Dispara.
-        if (fireCountdown <= 0f)
-        {
-            Shoot();
-            fireCountdown = 1f / fireRate;
-        }
-
-        fireCountdown -= Time.deltaTime;
-    }
-
-    //Instancia el Bullet.
-    void Shoot()
-    {
-        GameObject bulletGameObj = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Bullet bullet = bulletGameObj.GetComponent<Bullet>();
-
-        if (bullet != null)
-            bullet.Seek(target);
-        
-    }
-
-    //Targete al enemigo mas sercano.
-    void UpdateTarget()
+    private void FindClosestTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
+        float closestDistance = Mathf.Infinity;
+        Transform closestTarget = null;
 
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-            if (distanceToEnemy < shortestDistance)
+            float distance = Vector3.Distance(transform.position, enemy.transform.position);
+            if (distance < closestDistance && distance <= range)
             {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
+                closestDistance = distance;
+                closestTarget = enemy.transform;
             }
         }
 
-        if (nearestEnemy != null && shortestDistance <= range)
-        {
-            target = nearestEnemy.transform;
-        }
-        else
-        {
-            target = null;
-        }
+        _target = closestTarget;
     }
 
-    private void OnDrawGizmosSelected()
+    private void HandleShooting()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        if (_target == null) return;
+
+        if (_fireCooldown <= 0)
+        {
+            Shoot();
+            _fireCooldown = 1 / fireRate;
+        }
+
+        _fireCooldown -= Time.deltaTime;
+    }
+
+    private void Shoot()
+    {
+        GameObject bulletInstance = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        Bullet bullet = bulletInstance.GetComponent<Bullet>();
+        bullet.Initialize(_target, 10f, 25f); // Ejemplo de velocidad y daño.
     }
 }

@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CSceneManager : MonoBehaviour
 {
     public static CSceneManager instance;
+    public ScreenManager screenManager;
 
     public void Awake()
     {
@@ -32,21 +32,13 @@ public class CSceneManager : MonoBehaviour
         {
             SceneManager.LoadScene("Lvl 1");
             Time.timeScale = 0f;
-            //ScreenMG.instance.GetScreens(ScreensType.infoScreen).Activate();
         }
-        else
-        {
-            //abre la pantalla scren de stamina
-            //ScreenMG.instance.staminaScreen.Activate();
-            ScreenMG.instance.GetScreens(ScreensType.staminaScreen).Activate();
-        }
-
     }
 
     public void EndGame(params object[] parameters)
     {
         AudioManager.instance.Play("Loose");
-        ScreenMG.instance.GetScreens(ScreensType.gameOverScreen).Activate();
+        screenManager.ShowScreen(ScreensType.gameOverScreen);
 
         Debug.Log("GAME OVER");
     }
@@ -54,17 +46,17 @@ public class CSceneManager : MonoBehaviour
     public void WinGame(params object[] parameters)
     {
         AudioManager.instance.Play("Win");
-        ScreenMG.instance.GetScreens(ScreensType.winScreen).Activate();
+        screenManager.ShowScreen(ScreensType.winScreen);
     }
 
-    public void MianMenu()
+    public void MainMenu()
     {
         PlayerPrefs.DeleteKey("Money");
         PlayerPrefs.DeleteKey("Life");
         SceneManager.LoadScene("Main Menu");
     }
 
-    public void RestarGame()
+    public void RestartGame()
     {
         PlayerPrefs.DeleteKey("Money");
         PlayerPrefs.DeleteKey("Life");

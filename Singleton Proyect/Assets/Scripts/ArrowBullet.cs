@@ -6,9 +6,12 @@ public class ArrowBullet : Bullet
 {
     private void Start()
     {
+        Initialize(
+            target: null,
+            speed: FlyweightPointer.arrowBullet.speed,
+            damage: FlyweightPointer.arrowBullet.damage
+        );
+
         AudioManager.instance.Play("Arrow");
-        speed = FlyweightPointer.arrowBullet.speed;
-        damage = FlyweightPointer.arrowBullet.damage;
-        impactRadius = FlyweightPointer.arrowBullet.impactRadius;
     }
 }

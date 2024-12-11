@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class BuildManager : MonoBehaviour
 {
-    //Este script se encarga de Instanciar las diferentes torretas en el nodo.////////////////////////////////////////////////////////////////////////////////////
-
     public static BuildManager instance;
 
     public GameObject CannonTurretPrefab;
@@ -14,7 +12,10 @@ public class BuildManager : MonoBehaviour
 
     private TurretBlueprint turretToBuild;
 
-    void Awake()
+    private PlayerStats playerStats;
+    private TurretManager turretManager;
+
+    private void Awake()
     {
         if (instance != null)
         {
@@ -24,32 +25,46 @@ public class BuildManager : MonoBehaviour
         instance = this;
     }
 
-    //Propiedad que permite dicernir si la torreta se puede construir o no.
-    public bool CanBuild { get { return turretToBuild != null; } }
-    public bool HasMoney { get { return GameManager.instance.Money >= turretToBuild.cost; } }
+    private void Start()
+    {
+        // Inicializar referencias a PlayerStats y TurretManager
+        playerStats = FindObjectOfType<PlayerStats>();
+        turretManager = FindObjectOfType<TurretManager>();
 
+        if (playerStats == null || turretManager == null)
+        {
+            Debug.LogError("PlayerStats o TurretManager no encontrados en la escena.");
+        }
+    }
 
+    public bool CanBuild => turretToBuild != null;
+    public bool HasMoney => playerStats != null && turretToBuild != null && playerStats.Money >= turretToBuild.cost;
 
-
-    //Construlle la torreta en el Nodo indicado si tenes el dinero suficiente./////////////////////////////////////////////////////////////////////////////////
     public void BuildTurretOn(Node node)
     {
-        if(GameManager.instance.Money < turretToBuild.cost)
+        if (!CanBuild)
         {
-            Debug.Log("Not enaugh money");
+            Debug.Log("No turret selected to build.");
             return;
         }
 
-        GameManager.instance.Money -= turretToBuild.cost;
+        if (!HasMoney)
+        {
+            Debug.Log("Not enough money to build.");
+            return;
+        }
 
-        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
+        playerStats.ReduceMoney(turretToBuild.cost);
 
-        Debug.Log("Turret build... Money left:" + GameManager.instance.Money);
+        GameObject turret = Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
+        node.SetTurret(turret);
+
+        Debug.Log($"Turret built! Money left: {playerStats.Money}");
     }
 
-    public void SelectTurretToBuild (TurretBlueprint turret)
+    public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        Debug.Log($"Selected turret: {turret.prefab.name}");
     }
 }

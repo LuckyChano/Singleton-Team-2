@@ -1,31 +1,44 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StaminaScreen : Screens
+public class StaminaScreen : MonoBehaviour, IScreen
 {
     private void Start()
     {
-        ScreenMG.instance.AddScreen(ScreensType.staminaScreen, this);
-        Desactivate();
+        var screenManager = FindObjectOfType<ScreenManager>();
+        if (screenManager != null)
+        {
+            screenManager.RegisterScreen(ScreensType.staminaScreen, this);
+            Hide();
+        }
+        else
+        {
+            Debug.LogError("ScreenManager no encontrado en la escena.");
+        }
     }
 
     public void BTN_Return()
     {
         AudioManager.instance.Play("Button");
-        Desactivate();
+        Hide();
     }
 
-    public override void Activate()
+    public void CantPlay()
+    {
+        if (!GameManager.instance.puedoJugar)
+        {
+            Show();
+        }
+    }
+
+    public void Show()
     {
         gameObject.SetActive(true);
         SetInteractionsButtons(true);
     }
 
-    public override void Desactivate()
+    public void Hide()
     {
         gameObject.SetActive(false);
         SetInteractionsButtons(false);
@@ -33,11 +46,10 @@ public class StaminaScreen : Screens
 
     private void SetInteractionsButtons(bool active)
     {
-        var b = GetComponentsInChildren<Button>();
-
-        foreach (var item in b)
+        var buttons = GetComponentsInChildren<Button>();
+        foreach (var button in buttons)
         {
-            item.interactable = active;
+            button.interactable = active;
         }
     }
 }

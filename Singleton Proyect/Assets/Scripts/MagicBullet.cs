@@ -6,9 +6,12 @@ public class MagicBullet : Bullet
 {
     private void Start()
     {
+        Initialize(
+            target: null,
+            speed: FlyweightPointer.magicBullet.speed,
+            damage: FlyweightPointer.magicBullet.damage
+        );
+
         AudioManager.instance.Play("Magic");
-        speed = FlyweightPointer.magicBullet.speed;
-        damage = FlyweightPointer.magicBullet.damage;
-        impactRadius = FlyweightPointer.magicBullet.impactRadius;
     }
 }
