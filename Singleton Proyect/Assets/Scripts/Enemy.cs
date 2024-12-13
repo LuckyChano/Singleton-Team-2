@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Orc : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     [SerializeField] private EnemyData _enemyData;
     private EnemyHealth _healthComponent;
@@ -12,7 +12,7 @@ public class Orc : MonoBehaviour
     {
         if (_enemyData == null)
         {
-            Debug.LogError("EnemyData no está asignado para el Skeleton.");
+            Debug.LogError("EnemyData no está asignado al prefab del enemigo.");
             return;
         }
 

@@ -9,21 +9,21 @@ public class PauseScreen : MonoBehaviour, IScreen
 {
     private void Start()
     {
-        gameObject.SetActive(false); // Asegura que la pantalla esté desactivada al inicio.
+        gameObject.SetActive(false);
     }
 
     public void Show()
     {
         gameObject.SetActive(true);
         SetInteractionsButtons(true);
-        Time.timeScale = 0f; // Pausa el tiempo cuando la pantalla está activa.
+        Time.timeScale = 0f;
     }
 
     public void Hide()
     {
         gameObject.SetActive(false);
         SetInteractionsButtons(false);
-        Time.timeScale = 1f; // Reanuda el tiempo cuando la pantalla se cierra.
+        Time.timeScale = 1f;
     }
 
     public void BTN_Continue()
@@ -42,6 +42,11 @@ public class PauseScreen : MonoBehaviour, IScreen
     {
         FindObjectOfType<AudioManager>().Play("Button");
         Show();
+    }
+    public void BTN_MainMenu()
+    {
+        FindObjectOfType<AudioManager>().Play("Button");
+        FindObjectOfType<CSceneManager>().MainMenu();
     }
 
     private void SetInteractionsButtons(bool active)

@@ -27,6 +27,13 @@ public class GameManager : MonoBehaviour
         PlayerStats = GetComponent<PlayerStats>();
         TurretManager = GetComponent<TurretManager>();
         GameConditionsManager = GetComponent<GameConditionsManager>();
+
+        if (PlayerStats == null)
+            Debug.LogError("PlayerStats no está asignado al GameManager.");
+        if (TurretManager == null)
+            Debug.LogError("TurretManager no está asignado al GameManager.");
+        if (GameConditionsManager == null)
+            Debug.LogError("GameConditionsManager no está asignado al GameManager.");
     }
 
     private void Start()
@@ -39,6 +46,7 @@ public class GameManager : MonoBehaviour
 
         PlayerStats.Initialize(startMoney, startLives);
         LoadGame();
+        LoadLevelProgress();
 
         if (nextStaminaTime == default(DateTime))
         {
@@ -64,22 +72,39 @@ public class GameManager : MonoBehaviour
 
         PlayerPrefs.SetString("nextStaminaTime", nextStaminaTime.ToBinary().ToString());
         PlayerPrefs.SetInt("Stamina", stamina);
+
+        PlayerPrefs.Save();
     }
 
     public void LoadGame()
     {
         if (PlayerPrefs.HasKey("Life") && PlayerPrefs.HasKey("Money"))
         {
-            PlayerStats.Initialize(
-                PlayerPrefs.GetInt("Money"),
-                PlayerPrefs.GetInt("Life")
-            );
+            if (PlayerStats != null)
+            {
+                PlayerStats.Initialize(
+                    PlayerPrefs.GetInt("Money"),
+                    PlayerPrefs.GetInt("Life")
+                );
+            }
+            else
+            {
+                Debug.LogWarning("No se pudo inicializar PlayerStats durante la carga del juego.");
+            }
         }
 
         if (PlayerPrefs.HasKey("nextStaminaTime"))
         {
-            long temp = Convert.ToInt64(PlayerPrefs.GetString("nextStaminaTime"));
-            nextStaminaTime = DateTime.FromBinary(temp);
+            long temp;
+            if (long.TryParse(PlayerPrefs.GetString("nextStaminaTime"), out temp))
+            {
+                nextStaminaTime = DateTime.FromBinary(temp);
+            }
+            else
+            {
+                Debug.LogWarning("El valor de nextStaminaTime en PlayerPrefs no es un número válido.");
+                nextStaminaTime = DateTime.Now.AddSeconds(timeToRecharge);
+            }
         }
         else
         {
@@ -87,6 +112,17 @@ public class GameManager : MonoBehaviour
         }
 
         stamina = PlayerPrefs.GetInt("Stamina", maxStamina);
+    }
+
+    public void SaveLevelProgress(int currentLevel)
+    {
+        PlayerPrefs.SetInt("CurrentLevel", currentLevel);
+        PlayerPrefs.Save();
+    }
+
+    public void LoadLevelProgress()
+    {
+        int savedLevel = PlayerPrefs.GetInt("CurrentLevel", 1);
     }
 
     public void HavePlay()

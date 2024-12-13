@@ -41,6 +41,11 @@ public class WinScreen : MonoBehaviour, IScreen
         gameObject.SetActive(false);
         SetInteractionsButtons(false);
     }
+    public void BTN_MainMenu()
+    {
+        FindObjectOfType<AudioManager>().Play("Button");
+        FindObjectOfType<CSceneManager>().MainMenu();
+    }
 
     private void SetInteractionsButtons(bool active)
     {

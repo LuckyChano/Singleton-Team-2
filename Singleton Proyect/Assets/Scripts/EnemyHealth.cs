@@ -1,9 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public event Action OnEnemyDeath;
+
     private float _health;
     private int _moneyReward;
 
@@ -24,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
+        OnEnemyDeath?.Invoke();
         PlayerStats playerStats = FindObjectOfType<PlayerStats>();
         playerStats.AddMoney(_moneyReward);
         gameObject.SetActive(false);

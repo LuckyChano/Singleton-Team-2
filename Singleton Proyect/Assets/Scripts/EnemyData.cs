@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyData
+[CreateAssetMenu(fileName = "NewEnemyData", menuName = "TowerDefense/EnemyData")]
+public class EnemyData : ScriptableObject
 {
+    [Header("Enemy Stats")]
     public int maxLife;
     public int speed;
     public int moneyGain;
-
-    public EnemyData(int maxLife, int speed, int moneyGain)
-    {
-        this.maxLife = maxLife;
-        this.speed = speed;
-        this.moneyGain = moneyGain;
-    }
 }

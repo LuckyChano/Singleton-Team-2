@@ -549,7 +549,9 @@ GameObject:
   - component: {fileID: 2338950999659982327}
   - component: {fileID: 2509194297891624284}
   - component: {fileID: 6927160754218860079}
-  - component: {fileID: -2067177290277039259}
+  - component: {fileID: 4166031017876042945}
+  - component: {fileID: 5654107201292427320}
+  - component: {fileID: 289428729953696379}
   m_Layer: 0
   m_Name: Skeleton
   m_TagString: Enemy
@@ -627,7 +629,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-2067177290277039259
+--- !u!114 &4166031017876042945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -636,10 +638,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1533573690197128127}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae4435a68e5542a4b9fd6761590590b8, type: 3}
+  m_Script: {fileID: 11500000, guid: c686a6de2c669994aad8e973219d1168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 3355040975197570571, guid: 3c6360c2edc602a4eb17000d777dafa6, type: 3}
+  _enemyData: {fileID: 11400000, guid: b40304709e6983042b47503abdb878ff, type: 2}
+--- !u!114 &5654107201292427320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533573690197128127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b331089d169e70746bd49ae82990f4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &289428729953696379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1533573690197128127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ab0cbb92203f746abff3a5d89c92fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1533573690197128133
 GameObject:
   m_ObjectHideFlags: 0

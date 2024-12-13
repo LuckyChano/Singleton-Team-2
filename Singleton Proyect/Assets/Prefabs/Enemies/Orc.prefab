@@ -164,7 +164,9 @@ GameObject:
   - component: {fileID: 4790432552486902243}
   - component: {fileID: -4549510391361691320}
   - component: {fileID: 156692008529414715}
-  - component: {fileID: 6814849961022515463}
+  - component: {fileID: 8705153703829735361}
+  - component: {fileID: -6942392506466049968}
+  - component: {fileID: -1318752336467903787}
   m_Layer: 0
   m_Name: Orc
   m_TagString: Enemy
@@ -242,7 +244,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &6814849961022515463
+--- !u!114 &8705153703829735361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -251,10 +253,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 8594785264908470187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e270b85c19ffb43a4f5f03f46d8a94, type: 3}
+  m_Script: {fileID: 11500000, guid: c686a6de2c669994aad8e973219d1168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathEffect: {fileID: 3355040975197570571, guid: 3c6360c2edc602a4eb17000d777dafa6, type: 3}
+  _enemyData: {fileID: 11400000, guid: 0223b3d1fce2c7f44b8783d0b914a948, type: 2}
+--- !u!114 &-6942392506466049968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594785264908470187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b331089d169e70746bd49ae82990f4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1318752336467903787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594785264908470187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04ab0cbb92203f746abff3a5d89c92fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8594785264908470189
 GameObject:
   m_ObjectHideFlags: 0

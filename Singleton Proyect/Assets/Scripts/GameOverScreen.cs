@@ -23,6 +23,11 @@ public class GameOverScreen : MonoBehaviour, IScreen
         AudioManager.instance.Play("Button");
         Hide();
     }
+    public void BTN_MainMenu()
+    {
+        FindObjectOfType<AudioManager>().Play("Button");
+        FindObjectOfType<CSceneManager>().MainMenu();
+    }
 
     public void Show()
     {

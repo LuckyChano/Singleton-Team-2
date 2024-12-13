@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &73948918969320892
+--- !u!1 &774338172978354173
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,41 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4040831588611615193}
-  - component: {fileID: 1741824317476407392}
+  - component: {fileID: 7371471262187477598}
+  - component: {fileID: 6116251426444420762}
   m_Layer: 0
-  m_Name: ScreenManager
+  m_Name: BuildManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4040831588611615193
+--- !u!4 &7371471262187477598
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73948918969320892}
+  m_GameObject: {fileID: 774338172978354173}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 259.3558, y: 168.45056, z: 11.3619}
+  m_LocalPosition: {x: -137.69936, y: 9.229008, z: -38.85174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1741824317476407392
+--- !u!114 &6116251426444420762
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 73948918969320892}
+  m_GameObject: {fileID: 774338172978354173}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01b132618d8715f4baf31c7ff8434a3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b2e275cbc42ed04ea9eb54084df9fbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CannonTurretPrefab: {fileID: 8318745803258563925, guid: 043f5a3170dd1174487f311797277eaa, type: 3}
+  ArrowTurretPrefab: {fileID: 2846182938289654871, guid: 70bb2e04c8e311b4f9198f11498cb397, type: 3}
+  MagicTurretPrefab: {fileID: 1161735051256167630, guid: cadc5112503052446a74fe1df859b8c6, type: 3}

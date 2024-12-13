@@ -15,6 +15,8 @@ public class InfoScreen : MonoBehaviour, IScreen
         {
             Debug.LogError("ScreenManager no encontrado en la escena.");
         }
+
+        Show();
     }
 
     public void BTN_Continue()
