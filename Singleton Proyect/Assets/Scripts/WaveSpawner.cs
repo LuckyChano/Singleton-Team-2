@@ -16,6 +16,20 @@ public class WaveSpawner : MonoBehaviour
     private float _countdown;          // Temporizador interno
     private int _enemiesRemaining;     // Número de enemigos restantes en la oleada
 
+    public static WaveSpawner Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         _countdown = timeBetweenWaves;
@@ -44,6 +58,12 @@ public class WaveSpawner : MonoBehaviour
         {
             waveUIManager.UpdateTimer(_countdown);
         }
+    }
+
+    public bool AreAllWavesCompleted()
+    {
+        Debug.Log($"CurrentWave: {waveConfigs.Count}, TotalWaves: {_currentWaveIndex}, EnemiesAlive: {_enemiesRemaining}");
+        return _currentWaveIndex >= waveConfigs.Count && _enemiesRemaining == 0;
     }
 
     private IEnumerator SpawnWave()
@@ -85,4 +105,6 @@ public class WaveConfig
     public List<GameObject> enemyPrefabs; // Lista de posibles enemigos para esta oleada
     public int enemyCount;               // Número de enemigos
     public float spawnInterval;          // Intervalo entre spawns
+
+    public bool IsCompleted() => enemyCount == 0;
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfe8b4c103ccf1040983a12dddc093cc, type: 3}
   m_Name: Orc
   m_EditorClassIdentifier: 
-  maxLife: 25
+  maxLife: 50
   speed: 10
   moneyGain: 200

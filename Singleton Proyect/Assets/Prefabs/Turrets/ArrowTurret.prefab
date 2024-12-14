@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 703687224158354445}
   - component: {fileID: 2483077726821076785}
   - component: {fileID: 2334203533441441533}
+  - component: {fileID: 7287594346717127530}
   m_Layer: 0
   m_Name: ArrowTurret
   m_TagString: Untagged
@@ -191,12 +192,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 40
   fireRate: 0.7
-  enemyTag: Enemy
-  partToRotate: {fileID: 1372461952155076650}
   bulletPrefab: {fileID: 8682710462057677500, guid: 63921290430479843bef29ea70ea9221, type: 3}
   firePoint: {fileID: 1372461951773804137}
-  turnSpeed: 10
-  fireCountdown: 0
+  head: {fileID: 1372461952155076650}
+  bulletType: arrow
+--- !u!114 &7287594346717127530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2846182938289654871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a811a939467bc449c4b2402e288e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3696348181380210213
 GameObject:
   m_ObjectHideFlags: 0

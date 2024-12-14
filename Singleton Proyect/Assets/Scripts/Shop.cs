@@ -1,11 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    //Este script se encarga de seleccionar la torreta que voy a construir una vez que el BluePrint fue seleccionado./////////////////////////////////////////////////////////////////////////////////////
-
     public TurretBlueprint arrowTurret;
     public TurretBlueprint cannonTurret;
     public TurretBlueprint magicTurret;
@@ -14,25 +10,24 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
-        buildManager = BuildManager.instance;    
+        buildManager = BuildManager.instance;
     }
 
-    //Estos llaman a un metodo en el build manager que se encargar de seleccionar la torreta que se va a construir.
     public void SelectArrowTurret()
     {
-        Debug.Log("ArrowTurret");
+        Debug.Log("Seleccionando torreta de flechas.");
         buildManager.SelectTurretToBuild(arrowTurret);
     }
+
     public void SelectCannonTurret()
     {
-        Debug.Log("CannonTurret");
+        Debug.Log("Seleccionando torreta de cañón.");
         buildManager.SelectTurretToBuild(cannonTurret);
     }
+
     public void SelectMagicTurret()
     {
-        Debug.Log("MagicTurret");
+        Debug.Log("Seleccionando torreta mágica.");
         buildManager.SelectTurretToBuild(magicTurret);
     }
-
-    //NOTA: LA TORRETA MAGICA SE COLOCA Y DESPUES SE PUEDE MEJORAR EN ALGUN ELEMENTO.
 }

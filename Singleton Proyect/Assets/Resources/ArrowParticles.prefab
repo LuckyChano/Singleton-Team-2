@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2411669020159406037}
   - component: {fileID: 2411669020159406039}
   - component: {fileID: 2411669020159406038}
+  - component: {fileID: -5852943119255613272}
   m_Layer: 0
   m_Name: ArrowParticles
   m_TagString: Untagged
@@ -4863,6 +4864,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-5852943119255613272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2411669020159406036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38900595b31f66947b4390a0956d2357, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyDelay: 1
 --- !u!1 &7112140243987941220
 GameObject:
   m_ObjectHideFlags: 0

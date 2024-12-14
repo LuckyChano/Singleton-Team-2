@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     public int startLives;
 
     public PlayerStats PlayerStats { get; private set; }
-    public TurretManager TurretManager { get; private set; }
+    public BuildManager BuildManager { get; private set; }
     public GameConditionsManager GameConditionsManager { get; private set; }
+
+    private WaveSpawner _waveSpawner;
 
     private void Awake()
     {
@@ -25,24 +27,31 @@ public class GameManager : MonoBehaviour
         else Destroy(gameObject);
 
         PlayerStats = GetComponent<PlayerStats>();
-        TurretManager = GetComponent<TurretManager>();
+        BuildManager = FindObjectOfType<BuildManager>();
         GameConditionsManager = GetComponent<GameConditionsManager>();
+        _waveSpawner = FindObjectOfType<WaveSpawner>();
 
         if (PlayerStats == null)
             Debug.LogError("PlayerStats no está asignado al GameManager.");
-        if (TurretManager == null)
-            Debug.LogError("TurretManager no está asignado al GameManager.");
+        if (BuildManager == null)
+            Debug.LogError("BuildManager no está asignado al GameManager.");
         if (GameConditionsManager == null)
             Debug.LogError("GameConditionsManager no está asignado al GameManager.");
     }
 
     private void Start()
     {
+        if (PlayerStats == null || _waveSpawner == null)
+        {
+            Debug.LogError("PlayerStats o WaveSpawner no están configurados correctamente.");
+            return;
+        }
+
         GameConditionsManager.Initialize(new List<IGameCondition>
         {
-            new WinCondition(3000),
+            new WinCondition(),
             new LoseCondition()
-        });
+        }, PlayerStats, _waveSpawner);
 
         PlayerStats.Initialize(startMoney, startLives);
         LoadGame();
@@ -63,6 +72,11 @@ public class GameManager : MonoBehaviour
             stamina++;
             nextStaminaTime = DateTime.Now.AddSeconds(timeToRecharge);
         }
+    }
+
+    public WaveSpawner GetWaveSpawner()
+    {
+        return _waveSpawner;
     }
 
     public void SaveGame()

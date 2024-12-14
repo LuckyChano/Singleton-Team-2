@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
     private Transform _target;
     private float _speed;
     private float _damage;
+    private float _impactRadius;
+    private string _particlePrefabName;
 
-    public void Initialize(Transform target, float speed, float damage)
+    public void Initialize(Transform target, float speed, float damage, float impactRadius, string particlePrefabName)
     {
         _target = target;
         _speed = speed;
         _damage = damage;
+        _impactRadius = impactRadius;
+        _particlePrefabName = particlePrefabName;
     }
 
     private void Update()
@@ -24,18 +28,56 @@ public abstract class Bullet : MonoBehaviour
         }
 
         Vector3 direction = _target.position - transform.position;
-        transform.Translate(direction.normalized * _speed * Time.deltaTime, Space.World);
+        float distanceThisFrame = _speed * Time.deltaTime;
+        transform.rotation = Quaternion.LookRotation(direction);
 
-        if (Vector3.Distance(transform.position, _target.position) < 0.5f)
+        if (direction.magnitude <= distanceThisFrame)
         {
             HitTarget();
+            return;
         }
+
+        transform.Translate(direction.normalized * distanceThisFrame, Space.World);
     }
 
     private void HitTarget()
     {
-        var damageable = _target.GetComponent<IDamageable>();
-        damageable?.TakeDamage(_damage);
+        if (!string.IsNullOrEmpty(_particlePrefabName))
+        {
+            GameObject particles = Resources.Load<GameObject>(_particlePrefabName);
+            if (particles != null)
+            {
+                Instantiate(particles, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Debug.LogWarning($"No se encontró el prefab de partículas: {_particlePrefabName}");
+            }
+        }
+
+        if (_impactRadius > 0f)
+        {
+            Collider[] colliders = Physics.OverlapSphere(transform.position, _impactRadius);
+            foreach (var collider in colliders)
+            {
+                var damageable = collider.GetComponent<IDamageable>();
+                var enemyHealth = collider.GetComponent<EnemyHealth>();
+                if (enemyHealth != null && !enemyHealth.IsDead) // Verifica si el enemigo está vivo
+                {
+                    damageable?.TakeDamage(_damage);
+                }
+            }
+        }
+        else
+        {
+            var damageable = _target.GetComponent<IDamageable>();
+            var enemyHealth = _target.GetComponent<EnemyHealth>();
+            if (enemyHealth != null && !enemyHealth.IsDead) // Verifica si el enemigo está vivo
+            {
+                damageable?.TakeDamage(_damage);
+            }
+        }
+
         Destroy(gameObject);
     }
 }

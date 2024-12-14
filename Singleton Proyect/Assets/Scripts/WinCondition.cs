@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class WinCondition : IGameCondition
 {
-    private readonly float _targetMoney;
-
-    public WinCondition(float targetMoney) => _targetMoney = targetMoney;
-
-    public bool IsConditionMet(PlayerStats stats) => stats.Money >= _targetMoney;
+    public bool IsConditionMet(GameConditionsManager context)
+    {
+        var waveSpawner = context.GetWaveSpawner();
+        return waveSpawner != null && waveSpawner.AreAllWavesCompleted();
+    }
 
     public void Execute()
     {
+        Debug.Log("¡Ganaste el juego!");
         EventManager.Trigger(EventManager.NameEvent.Win);
     }
 }

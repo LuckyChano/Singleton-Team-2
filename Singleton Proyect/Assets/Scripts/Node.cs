@@ -12,8 +12,7 @@ public class Node : MonoBehaviour
     private Renderer _renderer;
     private Color _startColor;
 
-    private Turret _turret;
-    private TurretBlueprint _turretBlueprint;
+    private GameObject _turret;
 
     private void Start()
     {
@@ -25,29 +24,41 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
-        var turretManager = FindObjectOfType<TurretManager>();
-        var playerStats = FindObjectOfType<PlayerStats>();
+        if (EventSystem.current.IsPointerOverGameObject()) return;
 
-        if (!turretManager.CanBuild(playerStats)) return;
-        if (_turret != null) return;
+        var buildManager = BuildManager.instance;
 
-        turretManager.BuildTurret(this, playerStats);
+        if (!buildManager.CanBuild) return;
+        if (_turret != null)
+        {
+            Debug.Log("Nodo ocupado.");
+            return;
+        }
+
+        buildManager.BuildTurretOn(this);
     }
 
     private void OnMouseEnter()
     {
-        var turretManager = FindObjectOfType<TurretManager>();
-        var playerStats = FindObjectOfType<PlayerStats>();
+        var buildManager = BuildManager.instance;
 
-        _renderer.material.color = turretManager.CanBuild(playerStats) ? hoverColor : cantBuyColor;
+        if (!buildManager.CanBuild)
+        {
+            _renderer.material.color = cantBuyColor;
+        }
+        else
+        {
+            _renderer.material.color = hoverColor;
+        }
     }
 
     private void OnMouseExit()
     {
         _renderer.material.color = _startColor;
     }
-    public void SetTurret(GameObject newTurret)
+
+    public void SetTurret(GameObject turret)
     {
-        _turretBlueprint.prefab = newTurret;
+        _turret = turret;
     }
 }

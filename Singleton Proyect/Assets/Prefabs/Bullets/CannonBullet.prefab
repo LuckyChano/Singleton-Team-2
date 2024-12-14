@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6818651736414351287}
   - component: {fileID: 2474061132855856301}
   - component: {fileID: 6611256446840128546}
-  - component: {fileID: 9010495492831827955}
+  - component: {fileID: -714884616120392273}
   m_Layer: 0
   m_Name: CannonBullet
   m_TagString: Untagged
@@ -97,7 +97,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9010495492831827955
+--- !u!114 &-714884616120392273
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -106,14 +106,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5026633428818969161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e5cdfadb4452d44584884e430c1dd0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 497cf265a02607a478e3cf5538d6444d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  impactEffect: {fileID: 7140955552471310401, guid: 3c2be170b588b5e4d893607c614b159e, type: 3}
-  speed: 60
-  impactRadius: 0
-  damage: 50
 --- !u!1 &6634960966246306571
 GameObject:
   m_ObjectHideFlags: 0

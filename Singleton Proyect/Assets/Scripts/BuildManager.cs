@@ -6,20 +6,14 @@ public class BuildManager : MonoBehaviour
 {
     public static BuildManager instance;
 
-    public GameObject CannonTurretPrefab;
-    public GameObject ArrowTurretPrefab;
-    public GameObject MagicTurretPrefab;
-
-    private TurretBlueprint turretToBuild;
-
+    private TurretBlueprint turretToBuild; // Almacena la torreta seleccionada.
     private PlayerStats playerStats;
-    private TurretManager turretManager;
 
     private void Awake()
     {
         if (instance != null)
         {
-            Debug.LogError("More than one Build Manager");
+            Debug.LogError("Más de un BuildManager en la escena.");
             return;
         }
         instance = this;
@@ -27,13 +21,11 @@ public class BuildManager : MonoBehaviour
 
     private void Start()
     {
-        // Inicializar referencias a PlayerStats y TurretManager
         playerStats = FindObjectOfType<PlayerStats>();
-        turretManager = FindObjectOfType<TurretManager>();
 
-        if (playerStats == null || turretManager == null)
+        if (playerStats == null)
         {
-            Debug.LogError("PlayerStats o TurretManager no encontrados en la escena.");
+            Debug.LogError("PlayerStats no encontrado en la escena.");
         }
     }
 
@@ -44,27 +36,29 @@ public class BuildManager : MonoBehaviour
     {
         if (!CanBuild)
         {
-            Debug.Log("No turret selected to build.");
+            Debug.Log("No hay torreta seleccionada.");
             return;
         }
 
         if (!HasMoney)
         {
-            Debug.Log("Not enough money to build.");
+            Debug.Log("No hay suficiente dinero.");
             return;
         }
 
+        // Reduce el dinero del jugador.
         playerStats.ReduceMoney(turretToBuild.cost);
 
+        // Construye la torreta en el nodo.
         GameObject turret = Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.SetTurret(turret);
+        node.SetTurret(turret); // Registra la torreta en el nodo.
 
-        Debug.Log($"Turret built! Money left: {playerStats.Money}");
+        Debug.Log($"Torreta construida. Dinero restante: {playerStats.Money}");
     }
 
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
-        Debug.Log($"Selected turret: {turret.prefab.name}");
+        Debug.Log($"Torreta seleccionada: {turret.prefab.name}");
     }
 }

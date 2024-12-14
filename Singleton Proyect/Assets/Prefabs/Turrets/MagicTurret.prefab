@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4513482448373697684}
   - component: {fileID: 1519201382185107368}
   - component: {fileID: 6856969395083891500}
+  - component: {fileID: 4680119401957855600}
   m_Layer: 0
   m_Name: MagicTurret
   m_TagString: Untagged
@@ -97,12 +98,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 30
   fireRate: 0.3
-  enemyTag: Enemy
-  partToRotate: {fileID: 3469476935346286827}
   bulletPrefab: {fileID: 3851485714448879669, guid: dbacbcf012740634f80d1081764167b4, type: 3}
   firePoint: {fileID: 3469476934061694763}
-  turnSpeed: 10
-  fireCountdown: 0
+  head: {fileID: 3469476935346286827}
+  bulletType: magic
+--- !u!114 &4680119401957855600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1161735051256167630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a811a939467bc449c4b2402e288e40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1243021792124708962
 PrefabInstance:
   m_ObjectHideFlags: 0

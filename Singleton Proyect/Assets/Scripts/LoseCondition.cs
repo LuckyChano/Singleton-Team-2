@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class LoseCondition : IGameCondition
 {
-    public bool IsConditionMet(PlayerStats stats) => stats.Lives <= 0;
+    public bool IsConditionMet(GameConditionsManager context)
+    {
+        var playerStats = context.GetPlayerStats();
+        return playerStats != null && playerStats.Lives <= 0;
+    }
 
     public void Execute()
     {
-        EventManager.Trigger(EventManager.NameEvent.Lose);
+        Debug.Log("¡Perdiste el juego!");
     }
 }
